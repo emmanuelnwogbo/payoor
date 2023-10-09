@@ -41,7 +41,7 @@ export default {
 .sliderlanding {
     position: relative;
     background: $primary-color;
-    height: 100vh;
+    height: #{scaleValue(3500)};
     width: 100vw;
 
     &__slide {
@@ -55,6 +55,8 @@ export default {
             font-weight: 300;
             text-align: center;
             line-height: #{scaleValue(200)};
+            position: relative;
+            z-index: 2;
         }
 
         & button {
@@ -66,18 +68,23 @@ export default {
             font-weight: 600;
             font-size: #{scaleValue(70)};
             border-radius: #{scaleValue(20)};
+            position: relative;
+            z-index: 2;
         }
 
         & figure {
             position: absolute;
             top: 0;
             left: 0;
-            height: 100vh;
+            height: #{scaleValue(3500)};
+            z-index: 1;
+            width: 100vw;
+            overflow: hidden;
 
             & img {
                 object-fit: contain;
                 height: #{scaleValue(3400)};
-                transform: translateY( #{scaleValue(70)});
+                transform: translateY(#{scaleValue(70)});
             }
         }
     }
