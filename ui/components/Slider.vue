@@ -15,15 +15,25 @@
             </span>
         </div>
 
-        <div>
-            
+        <div class="sliderlanding__slide">
+            <h2>Your grocery shouldn’t have a tragic back story</h2>
+            <div class="sliderlanding__slidebtn">
+                <button>Join the Waitlist</button>
+            </div>
+            <figure>
+                <img src="@/assets/imgs/landing page2 1.png" />
+            </figure>
         </div>
     </div>
 </template>
 
 <script>
 export default {
-
+    data() {
+        return {
+            current: 1
+        }
+    }
 }
 </script>
 
@@ -33,5 +43,49 @@ export default {
     background: $primary-color;
     height: 100vh;
     width: 100vw;
+
+    &__slide {
+        padding: #{scaleValue(70)};
+        padding-top: #{scaleValue(760)};
+        overflow: hidden;
+
+        & h2 {
+            color: $white;
+            font-size: #{scaleValue(200)};
+            font-weight: 300;
+            text-align: center;
+            line-height: #{scaleValue(200)};
+        }
+
+        & button {
+            color: $primary-color;
+            background: $white;
+            padding: #{scaleValue(60)} #{scaleValue(200)};
+            border: none;
+            margin: 0 auto;
+            font-weight: 600;
+            font-size: #{scaleValue(70)};
+            border-radius: #{scaleValue(20)};
+        }
+
+        & figure {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100vh;
+
+            & img {
+                object-fit: contain;
+                height: #{scaleValue(3400)};
+                transform: translateY( #{scaleValue(70)});
+            }
+        }
+    }
+
+    &__slidebtn {
+        display: flex;
+        justify-content: center;
+        margin-top: #{scaleValue(120)};
+    }
 }
 </style>
