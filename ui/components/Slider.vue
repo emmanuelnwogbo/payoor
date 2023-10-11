@@ -111,10 +111,6 @@ export default {
     width: 100vw;
     overflow: hidden;
 
-    @media only screen and (max-width: 414px) {
-        //height: #{scaleValue(3500)};
-    }
-
     &__slide {
         padding: #{scaleValue(70)};
         padding-top: #{scaleValue(200)};
@@ -122,13 +118,85 @@ export default {
         width: 100%;
         height: 100%;
 
+        @media only screen and (max-width: 320px) {
+            padding-top: #{scaleValue(500)};
+        }
+
+        @media only screen and (max-width: 360px) {
+            padding-top: #{scaleValue(500)};
+        }
+
+        @media only screen and (max-width: 375px) {
+            padding-top: #{scaleValue(500)};
+        }
+
         @media only screen and (max-width: 414px) {
+            padding-top: #{scaleValue(500)};
+        }
+
+        @media only screen and (max-width: 480px) {
+            padding-top: #{scaleValue(500)};
+        }
+
+        @media only screen and (max-width: 540px) {
+            padding-top: #{scaleValue(500)};
+        }
+
+        @media only screen and (max-width: 600px) {
+            padding-top: #{scaleValue(500)};
+        }
+
+        @media only screen and (max-width: 720px) {
+            padding-top: #{scaleValue(500)};
+        }
+
+        @media only screen and (max-width: 768px) {
             padding-top: #{scaleValue(500)};
         }
 
         & h2 {
 
+            @media only screen and (max-width: 320px) {
+                font-size: #{scaleValue(170)};
+                line-height: #{scaleValue(200)};
+            }
+
+            @media only screen and (max-width: 360px) {
+                font-size: #{scaleValue(170)};
+                line-height: #{scaleValue(200)};
+            }
+
+            @media only screen and (max-width: 375px) {
+                font-size: #{scaleValue(170)};
+                line-height: #{scaleValue(200)};
+            }
+
             @media only screen and (max-width: 414px) {
+                font-size: #{scaleValue(170)};
+                line-height: #{scaleValue(200)};
+            }
+
+            @media only screen and (max-width: 480px) {
+                font-size: #{scaleValue(170)};
+                line-height: #{scaleValue(200)};
+            }
+
+            @media only screen and (max-width: 540px) {
+                font-size: #{scaleValue(170)};
+                line-height: #{scaleValue(200)};
+            }
+
+            @media only screen and (max-width: 600px) {
+                font-size: #{scaleValue(170)};
+                line-height: #{scaleValue(200)};
+            }
+
+            @media only screen and (max-width: 720px) {
+                font-size: #{scaleValue(170)};
+                line-height: #{scaleValue(200)};
+            }
+
+            @media only screen and (max-width: 768px) {
                 font-size: #{scaleValue(170)};
                 line-height: #{scaleValue(200)};
             }
@@ -183,7 +251,55 @@ export default {
             position: relative;
             z-index: 2;
 
+            @media only screen and (max-width: 320px) {
+                font-size: #{scaleValue(70)};
+                padding: #{scaleValue(60)} #{scaleValue(200)};
+                border-radius: #{scaleValue(20)};
+            }
+
+            @media only screen and (max-width: 360px) {
+                font-size: #{scaleValue(70)};
+                padding: #{scaleValue(60)} #{scaleValue(200)};
+                border-radius: #{scaleValue(20)};
+            }
+
+            @media only screen and (max-width: 375px) {
+                font-size: #{scaleValue(70)};
+                padding: #{scaleValue(60)} #{scaleValue(200)};
+                border-radius: #{scaleValue(20)};
+            }
+
             @media only screen and (max-width: 414px) {
+                font-size: #{scaleValue(70)};
+                padding: #{scaleValue(60)} #{scaleValue(200)};
+                border-radius: #{scaleValue(20)};
+            }
+
+            @media only screen and (max-width: 480px) {
+                font-size: #{scaleValue(70)};
+                padding: #{scaleValue(60)} #{scaleValue(200)};
+                border-radius: #{scaleValue(20)};
+            }
+
+            @media only screen and (max-width: 540px) {
+                font-size: #{scaleValue(70)};
+                padding: #{scaleValue(60)} #{scaleValue(200)};
+                border-radius: #{scaleValue(20)};
+            }
+
+            @media only screen and (max-width: 600px) {
+                font-size: #{scaleValue(70)};
+                padding: #{scaleValue(60)} #{scaleValue(200)};
+                border-radius: #{scaleValue(20)};
+            }
+
+            @media only screen and (max-width: 720px) {
+                font-size: #{scaleValue(70)};
+                padding: #{scaleValue(60)} #{scaleValue(200)};
+                border-radius: #{scaleValue(20)};
+            }
+
+            @media only screen and (max-width: 768px) {
                 font-size: #{scaleValue(70)};
                 padding: #{scaleValue(60)} #{scaleValue(200)};
                 border-radius: #{scaleValue(20)};
@@ -202,9 +318,42 @@ export default {
             display: flex;
             justify-content: center;
 
+            @media only screen and (max-width: 320px) {
+                height: #{scaleValue(3500)};
+            }
+
+            @media only screen and (max-width: 360px) {
+                height: #{scaleValue(3500)};
+            }
+
+            @media only screen and (max-width: 375px) {
+                height: #{scaleValue(3500)};
+            }
+
             @media only screen and (max-width: 414px) {
                 height: #{scaleValue(3500)};
             }
+
+            @media only screen and (max-width: 480px) {
+                height: #{scaleValue(3500)};
+            }
+
+            @media only screen and (max-width: 540px) {
+                height: #{scaleValue(3500)};
+            }
+
+            @media only screen and (max-width: 600px) {
+                height: #{scaleValue(3500)};
+            }
+
+            @media only screen and (max-width: 720px) {
+                height: #{scaleValue(3500)};
+            }
+
+            @media only screen and (max-width: 768px) {
+                height: #{scaleValue(3500)};
+            }
+
 
             & img {
                 position: absolute;
@@ -214,7 +363,47 @@ export default {
                 transition: all .5s ease;
                 width: #{scaleValue(2000)};
 
+                @media only screen and (max-width: 320px) {
+                    height: #{scaleValue(3500)};
+                    width: auto;
+                }
+
+                @media only screen and (max-width: 360px) {
+                    height: #{scaleValue(3500)};
+                    width: auto;
+                }
+
+                @media only screen and (max-width: 375px) {
+                    height: #{scaleValue(3500)};
+                    width: auto;
+                }
+
                 @media only screen and (max-width: 414px) {
+                    height: #{scaleValue(3500)};
+                    width: auto;
+                }
+
+                @media only screen and (max-width: 480px) {
+                    height: #{scaleValue(3500)};
+                    width: auto;
+                }
+
+                @media only screen and (max-width: 540px) {
+                    height: #{scaleValue(3500)};
+                    width: auto;
+                }
+
+                @media only screen and (max-width: 600px) {
+                    height: #{scaleValue(3500)};
+                    width: auto;
+                }
+
+                @media only screen and (max-width: 720px) {
+                    height: #{scaleValue(3500)};
+                    width: auto;
+                }
+
+                @media only screen and (max-width: 768px) {
                     height: #{scaleValue(3500)};
                     width: auto;
                 }
@@ -244,9 +433,42 @@ export default {
         justify-content: center;
         padding-top: #{scaleValue(130)};
 
+        @media only screen and (max-width: 320px) {
+            padding-top: #{scaleValue(780)};
+        }
+
+        @media only screen and (max-width: 360px) {
+            padding-top: #{scaleValue(780)};
+        }
+
+        @media only screen and (max-width: 375px) {
+            padding-top: #{scaleValue(780)};
+        }
+
         @media only screen and (max-width: 414px) {
             padding-top: #{scaleValue(780)};
         }
+
+        @media only screen and (max-width: 480px) {
+            padding-top: #{scaleValue(780)};
+        }
+
+        @media only screen and (max-width: 540px) {
+            padding-top: #{scaleValue(780)};
+        }
+
+        @media only screen and (max-width: 600px) {
+            padding-top: #{scaleValue(780)};
+        }
+
+        @media only screen and (max-width: 720px) {
+            padding-top: #{scaleValue(780)};
+        }
+
+        @media only screen and (max-width: 768px) {
+            padding-top: #{scaleValue(780)};
+        }
+
     }
 }
 </style>
