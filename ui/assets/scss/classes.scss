@@ -129,8 +129,8 @@
     }
 
     &__logo {
-        height: #{scaleValue(140)};
-        width: #{scaleValue(140)};
+        height: #{scaleValue(180)};
+        width: #{scaleValue(210)};
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -165,8 +165,8 @@
         &.burger {
             
             & svg {
-                height: #{scaleValue(40)};
-                width: #{scaleValue(30)};
+                height: #{scaleValue(50)};
+                width: #{scaleValue(50)};
 
                 @media only screen and (max-width: 414px) {
                     height: #{scaleValue(120)};
@@ -181,5 +181,21 @@
                 fill: $white;
             }
         }
+    }
+}
+
+.desktop {
+    display: inline-block;
+
+    @media only screen and (max-width: 414px) {
+        display: none;
+    }
+}
+
+.mobile {
+    display: none;
+
+    @media only screen and (max-width: 414px) {
+        display: inline-block;
     }
 }

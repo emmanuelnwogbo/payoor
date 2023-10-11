@@ -40,13 +40,25 @@
                 <button>Join the Waitlist</button>
             </div>
             <figure>
-                <img src="@/assets/imgs/landing page2 1.png" :class="{
+                <img src="@/assets/imgs/landing page2 1.png" class="mobile" :class="{
                     center: current === 1,
                     left: current === 2,
                     right: current === 3,
                     offcreen: current === 2 || current === 3
                 }" />
-                <img src="@/assets/imgs/mud spill 1.png" :class="{
+                <img src="@/assets/imgs/bike desktop.png" class="desktop" :class="{
+                    center: current === 1,
+                    left: current === 2,
+                    right: current === 3,
+                    offcreen: current === 2 || current === 3
+                }" />
+                <img src="@/assets/imgs/mud spill 1.png" class="mobile" :class="{
+                    center: current === 2,
+                    left: current === 3,
+                    right: current === 1,
+                    offcreen: current === 3 || current === 1
+                }" />
+                <img src="@/assets/imgs/mud desktop.png" class="desktop" :class="{
                     center: current === 2,
                     left: current === 3,
                     right: current === 1,
@@ -117,12 +129,12 @@ export default {
         & h2 {
 
             @media only screen and (max-width: 414px) {
-                font-size: #{scaleValue(200)};
+                font-size: #{scaleValue(150)};
                 line-height: #{scaleValue(200)};
             }
 
             color: $white;
-            font-size: #{scaleValue(70)};
+            font-size: #{scaleValue(60)};
             font-weight: 300;
             text-align: center;
             line-height: #{scaleValue(80)};
@@ -162,18 +174,19 @@ export default {
         & button {
             color: $primary-color;
             background: $white;
-            padding: #{scaleValue(20)} #{scaleValue(100)};
+            padding: #{scaleValue(30)} #{scaleValue(150)};
             border: none;
             margin: 0 auto;
             font-weight: 600;
-            font-size: #{scaleValue(20)};
-            border-radius: #{scaleValue(20)};
+            font-size: #{scaleValue(23)};
+            border-radius: #{scaleValue(10)};
             position: relative;
             z-index: 2;
 
             @media only screen and (max-width: 414px) {
                 font-size: #{scaleValue(70)};
                 padding: #{scaleValue(60)} #{scaleValue(200)};
+                border-radius: #{scaleValue(20)};
             }
         }
 
@@ -229,10 +242,10 @@ export default {
     &__slidebtn {
         display: flex;
         justify-content: center;
-        padding-top: #{scaleValue(200)};
+        padding-top: #{scaleValue(130)};
 
         @media only screen and (max-width: 414px) {
-            padding-top: #{scaleValue(980)};
+            padding-top: #{scaleValue(780)};
         }
     }
 }
