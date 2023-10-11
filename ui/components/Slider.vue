@@ -123,13 +123,13 @@ export default {
         height: 100%;
 
         @media only screen and (max-width: 414px) {
-            padding-top: #{scaleValue(760)};
+            padding-top: #{scaleValue(500)};
         }
 
         & h2 {
 
             @media only screen and (max-width: 414px) {
-                font-size: #{scaleValue(150)};
+                font-size: #{scaleValue(170)};
                 line-height: #{scaleValue(200)};
             }
 
