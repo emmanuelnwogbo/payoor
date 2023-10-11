@@ -102,7 +102,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    height: #{scaleValue(300)};
+    height: #{scaleValue(100)};
     background: $white;
     padding: 0 #{scaleValue(100)};
     z-index: 2;
@@ -110,6 +110,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @media only screen and (max-width: 414px) {
+        height: #{scaleValue(300)};
+    }
     
     &.shop {
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
@@ -125,13 +129,18 @@
     }
 
     &__logo {
-        height: #{scaleValue(500)};
-        width: #{scaleValue(500)};
+        height: #{scaleValue(140)};
+        width: #{scaleValue(140)};
         display: flex;
         justify-content: space-between;
         align-items: center;
-        transform: translateX(#{scaleValue(-40)});
-        //background: red;
+        transform: translateX(#{scaleValue(0)});
+        
+        @media only screen and (max-width: 414px) {
+            height: #{scaleValue(500)};
+            width: #{scaleValue(500)};
+            transform: translateX(#{scaleValue(-40)});
+        }
 
         & img {
             object-fit: cover;
@@ -141,17 +150,28 @@
     }
 
     &__logowrapper {
-        height: #{scaleValue(250)};
-        width: #{scaleValue(500)};
+        height: #{scaleValue(60)};
+        width: auto;
         overflow: hidden;
+
+        @media only screen and (max-width: 414px) {
+            height: #{scaleValue(250)};
+            width: #{scaleValue(500)};
+        }
     }
 
     & span {
 
         &.burger {
+            
             & svg {
-                height: #{scaleValue(120)};
-                width: #{scaleValue(120)};
+                height: #{scaleValue(40)};
+                width: #{scaleValue(30)};
+
+                @media only screen and (max-width: 414px) {
+                    height: #{scaleValue(120)};
+                    width: #{scaleValue(120)};
+                }
             }
         }
 

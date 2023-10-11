@@ -95,25 +95,39 @@ export default {
 .sliderlanding {
     position: relative;
     background: $primary-color;
-    height: #{scaleValue(3500)};
+    height: 100vh;
     width: 100vw;
+    overflow: hidden;
+
+    @media only screen and (max-width: 414px) {
+        //height: #{scaleValue(3500)};
+    }
 
     &__slide {
         padding: #{scaleValue(70)};
-        padding-top: #{scaleValue(760)};
+        padding-top: #{scaleValue(200)};
         overflow: hidden;
         width: 100%;
         height: 100%;
 
+        @media only screen and (max-width: 414px) {
+            padding-top: #{scaleValue(760)};
+        }
+
         & h2 {
+
+            @media only screen and (max-width: 414px) {
+                font-size: #{scaleValue(200)};
+                line-height: #{scaleValue(200)};
+            }
+
             color: $white;
-            font-size: #{scaleValue(200)};
+            font-size: #{scaleValue(70)};
             font-weight: 300;
             text-align: center;
-            line-height: #{scaleValue(200)};
+            line-height: #{scaleValue(80)};
             position: relative;
             z-index: 2;
-
             display: flex;
 
             & span {
@@ -148,31 +162,49 @@ export default {
         & button {
             color: $primary-color;
             background: $white;
-            padding: #{scaleValue(60)} #{scaleValue(200)};
+            padding: #{scaleValue(20)} #{scaleValue(100)};
             border: none;
             margin: 0 auto;
             font-weight: 600;
-            font-size: #{scaleValue(70)};
+            font-size: #{scaleValue(20)};
             border-radius: #{scaleValue(20)};
             position: relative;
             z-index: 2;
+
+            @media only screen and (max-width: 414px) {
+                font-size: #{scaleValue(70)};
+                padding: #{scaleValue(60)} #{scaleValue(200)};
+            }
         }
 
         & figure {
             position: absolute;
             top: 0;
             left: 0;
-            height: #{scaleValue(3500)};
+            height: #{scaleValue(1000)};
             z-index: 1;
             width: 100vw;
             overflow: hidden;
+            //background: red;
+            display: flex;
+            justify-content: center;
+
+            @media only screen and (max-width: 414px) {
+                height: #{scaleValue(3500)};
+            }
 
             & img {
                 position: absolute;
                 object-fit: contain;
-                height: #{scaleValue(3400)};
+                height: #{scaleValue(1000)};
                 transform: translateY(#{scaleValue(70)});
                 transition: all .5s ease;
+                width: #{scaleValue(2000)};
+
+                @media only screen and (max-width: 414px) {
+                    height: #{scaleValue(3500)};
+                    width: auto;
+                }
 
                 &.offcreen {
                     opacity: 0;
@@ -197,7 +229,11 @@ export default {
     &__slidebtn {
         display: flex;
         justify-content: center;
-        margin-top: #{scaleValue(980)};
+        padding-top: #{scaleValue(200)};
+
+        @media only screen and (max-width: 414px) {
+            padding-top: #{scaleValue(980)};
+        }
     }
 }
 </style>
