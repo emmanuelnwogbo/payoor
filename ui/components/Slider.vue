@@ -22,7 +22,7 @@
                     left: current === 2,
                     right: current === 3,
                     offcreen: current === 2 || current === 3
-                }">"Your grocery shouldn’t have a tragic back story"</span>
+                }" class="font-500">Your meals shouldn’t have a tragic back story</span>
                 <span :class="{
                     center: current === 2,
                     left: current === 3,
@@ -315,9 +315,9 @@ export default {
             left: 0;
             height: #{scaleValue(1000)};
             z-index: 1;
-            width: 100vw;
+            width: #{scaleValue(1600)};
+            background: red;
             overflow: hidden;
-            //background: red;
             display: flex;
             justify-content: center;
 
@@ -364,7 +364,7 @@ export default {
                 height: #{scaleValue(1000)};
                 transform: translateY(#{scaleValue(70)});
                 transition: all .5s ease;
-                width: #{scaleValue(2000)};
+                width: #{scaleValue(1700)};
 
                 @media only screen and (max-width: 320px) {
                     height: #{scaleValue(3500)};
