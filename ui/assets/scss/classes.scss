@@ -98,6 +98,22 @@
     }
 }
 
+.logo {
+    height: #{scaleValue(200)};
+    width: #{scaleValue(200)};
+    
+    @media only screen and (max-width: 768px) {
+        height: #{scaleValue(800)};
+        width: #{scaleValue(800)};
+    }
+    
+    & img {
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
+    }
+}
+
 .mobileheader {
     position: absolute;
     top: 0;
@@ -430,4 +446,126 @@
     @media only screen and (max-width: 768px) {
         display: inline-block;
     }
+}
+
+.form {
+
+}
+
+.formarea {
+   position: relative;
+   display: grid;
+   grid-template-columns: repeat(20, 1fr);
+   grid-gap: #{scaleValue(20)};
+   margin-bottom: #{scaleValue(30)};
+
+   @media only screen and (max-width: 768px) {
+    grid-gap: #{scaleValue(60)};
+    margin-bottom: #{scaleValue(100)};
+   }
+
+   &.button-area {
+      margin-top: #{scaleValue(60)};
+   }
+}
+
+.inputbox {
+    grid-column: span 10;
+    display: flex;
+    flex-direction: column-reverse;
+    position: relative;
+
+    &.full {
+        grid-column: 1 / span 20;
+    }
+
+    & button {
+        padding: #{scaleValue(20)} #{scaleValue(30)};
+        font-weight: 600;
+        font-size: #{scaleValue(20)};
+        border-radius: #{scaleValue(10)} !important;
+
+        @media only screen and (max-width: 768px) {
+            padding: #{scaleValue(100)} #{scaleValue(30)};
+            font-size: #{scaleValue(60)};
+            border-radius: #{scaleValue(20)} !important;
+        }
+    }
+}
+
+.inputbox__label {
+    color: $svg-color;
+    margin-bottom: #{scaleValue(10)};
+    font-weight: 400;
+    font-size: #{scaleValue(15)};
+    transition: all .5s ease;
+
+    @media only screen and (max-width: 768px) {
+        font-size: #{scaleValue(45)};
+        margin-bottom: #{scaleValue(30)};
+    }
+}
+
+
+.inputbox__input {
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid $svg-color;
+    background: $white;
+    outline: none;
+    padding: #{scaleValue(20)};
+    transition: all .5s ease;
+
+    @media only screen and (max-width: 768px) {
+        height: #{scaleValue(180)};
+        padding: #{scaleValue(60)};
+    }
+
+    &:focus {
+        border: 1px solid $primary-color;
+
+        & + label {
+            color: $primary-color;
+        }
+    }
+}
+
+.inputbox__options {
+    position: absolute;
+}
+
+.greencolor {
+    color: $primary-color !important;
+}
+
+.waitlist-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: #{scaleValue(20)};
+}
+
+.waitlist-option {
+    border-radius: #{scaleValue(10)};
+    color: $svg-color;
+    padding: #{scaleValue(20)};
+    border: 1px solid $svg-color;
+    cursor: pointer;
+
+    @media only screen and (max-width: 768px) {
+        height: #{scaleValue(180)};
+        padding: 0 #{scaleValue(50)};
+        margin-bottom: #{scaleValue(60)};
+        font-size: #{scaleValue(44)};
+        display: flex;
+        align-items: center;
+    }
+
+    &.greencolor {
+        color: $primary-color;
+        border: 1px solid $primary-color;
+    }
+}
+
+.highz {
+    z-index: 20;
 }

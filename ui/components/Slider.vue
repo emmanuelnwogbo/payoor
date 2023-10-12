@@ -22,19 +22,19 @@
                     left: current === 2,
                     right: current === 3,
                     offcreen: current === 2 || current === 3
-                }">Your grocery shouldn’t have a tragic back story</span>
+                }">"Your grocery shouldn’t have a tragic back story"</span>
                 <span :class="{
                     center: current === 2,
                     left: current === 3,
                     right: current === 1,
                     offcreen: current === 3 || current === 1
-                }">Eyaah, sorry madame</span>
+                }">"Eyaah, sorry madame"</span>
                 <span :class="{
                     center: current === 3,
                     left: current === 1,
                     right: current === 2,
                     offcreen: current === 2 || current === 1
-                }">You no go fit park for here</span>
+                }">"You no go fit park for here"</span>
             </h2>
             <div class="sliderlanding__slidebtn">
                 <button>Join the Waitlist</button>
