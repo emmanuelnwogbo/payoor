@@ -29,7 +29,7 @@
                     </figure>
                 </div>
                 <div class="form waitlist__formarea waitlist__flexarea">
-                    <div class="fixed-header-white">
+                    <div class="fixed-header-white mobile">
                         <figure class="waitlist__logo logo mobile">
                             <img src="@/assets/imgs/payoor-green-two.svg" />
                         </figure>
