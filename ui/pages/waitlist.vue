@@ -29,12 +29,14 @@
                     </figure>
                 </div>
                 <div class="form waitlist__formarea waitlist__flexarea">
-                    <figure class="waitlist__logo logo mobile">
-                        <img src="@/assets/imgs/payoor-green.svg" />
-                    </figure>
+                    <div class="fixed-header-white">
+                        <figure class="waitlist__logo logo mobile">
+                            <img src="@/assets/imgs/payoor-green-two.svg" />
+                        </figure>
+                    </div>
 
                     <div class="formbody">
-                        <div class="formarea highz">
+                        <div class="formarea">
                             <div class="inputbox">
                                 <input class="inputbox__input" type="text" placeholder="" v-model="firstname" />
                                 <label class="inputbox__label">
