@@ -146,6 +146,10 @@ export default {
     background: $white;
     overflow: hidden;
 
+    @media only screen and (max-width: 768px) {
+        height: #{scaleValue(3500)};
+    }
+
     &__logo {
         position: fixed;
         left: 0;
