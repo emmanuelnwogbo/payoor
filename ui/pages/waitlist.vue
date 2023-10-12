@@ -29,7 +29,7 @@
                     </figure>
                 </div>
                 <div class="form waitlist__formarea waitlist__flexarea">
-                    <figure class="waitlist__logo logo">
+                    <figure class="waitlist__logo logo mobile">
                         <img src="@/assets/imgs/payoor-green.svg" />
                     </figure>
 
@@ -212,7 +212,7 @@ export default {
         padding-top: #{scaleValue(100)};
 
         @media only screen and (max-width: 768px) {
-            padding: #{scaleValue(20)} #{scaleValue(100)};
+            padding: #{scaleValue(20)} #{scaleValue(90)};
             padding-top: #{scaleValue(500)};
         }
     }
