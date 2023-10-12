@@ -142,7 +142,7 @@ export default {
 
 <style lang="scss">
 .waitlist {
-    height: 100vh;
+    height: #{scaleValue(1000)};
     background: $white;
     overflow: hidden;
 
@@ -155,11 +155,12 @@ export default {
 
     &__content {
         display: flex;
+        height: 100%;
     }
 
     &__flexarea {
         width: 50%;
-        height: 100vh;
+        height: 100%;
 
         @media only screen and (max-width: 768px) {
             width: 100%;
