@@ -37,7 +37,7 @@
                 }">"You no go fit park for here"</span>
             </h2>
             <div class="sliderlanding__slidebtn">
-                <button>Join the Waitlist</button>
+                <button @click="waitlistform">Join the Waitlist</button>
             </div>
             <figure>
                 <img src="@/assets/imgs/landing page2 1.png" class="mobile" :class="{
@@ -95,6 +95,9 @@ export default {
 
                 console.log(this.current)
             }, 3000)
+        },
+        waitlistform() {
+            this.router.push('/waitlist');
         }
     },
     mounted() {
