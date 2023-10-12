@@ -33,69 +33,71 @@
                         <img src="@/assets/imgs/payoor-green.svg" />
                     </figure>
 
-                    <div class="formarea highz">
-                        <div class="inputbox">
-                            <input class="inputbox__input" type="text" placeholder="" v-model="firstname" />
-                            <label class="inputbox__label">
-                                First name
-                            </label>
-                        </div>
-                        <div class="inputbox">
-                            <input class="inputbox__input" type="text" placeholder="" v-model="lastname" />
-                            <label class="inputbox__label">
-                                Last name
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="formarea">
-                        <div class="inputbox full">
-                            <input class="inputbox__input" type="email" placeholder="" v-model="email" />
-                            <label class="inputbox__label">
-                                Email
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="formarea">
-                        <div class="inputbox full">
-                            <input class="inputbox__input" type="text" placeholder="" v-model="phonenumber" />
-                            <label class="inputbox__label">
-                                Phone number
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="formarea">
-                        <div class="inputbox">
-                            <input class="inputbox__input" type="text" placeholder="" v-model="state" />
-                            <label class="inputbox__label">
-                                State
-                            </label>
-                        </div>
-                        <div class="inputbox">
-                            <input class="inputbox__input" type="text" placeholder="" v-model="city" />
-                            <label class="inputbox__label">
-                                City
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="formarea">
-                        <div class="inputbox full">
-                            <div class="waitlist-options">
-                                <span class="waitlist-option" v-for="option in options" @click="selectoption(option)"
-                                    :class="{ greencolor: selectedoptions.includes(option) }">{{ option }}</span>
+                    <div class="formbody">
+                        <div class="formarea highz">
+                            <div class="inputbox">
+                                <input class="inputbox__input" type="text" placeholder="" v-model="firstname" />
+                                <label class="inputbox__label">
+                                    First name
+                                </label>
                             </div>
-                            <label class="inputbox__label greencolor">
-                                What is most important to you when you shop for foodstuff?
-                            </label>
+                            <div class="inputbox">
+                                <input class="inputbox__input" type="text" placeholder="" v-model="lastname" />
+                                <label class="inputbox__label">
+                                    Last name
+                                </label>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="formarea button-area">
-                        <div class="inputbox full">
-                            <button class="button primary">Join waitlist</button>
+                        <div class="formarea">
+                            <div class="inputbox full">
+                                <input class="inputbox__input" type="email" placeholder="" v-model="email" />
+                                <label class="inputbox__label">
+                                    Email
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="formarea">
+                            <div class="inputbox full">
+                                <input class="inputbox__input" type="text" placeholder="" v-model="phonenumber" />
+                                <label class="inputbox__label">
+                                    Phone number
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="formarea">
+                            <div class="inputbox">
+                                <input class="inputbox__input" type="text" placeholder="" v-model="state" />
+                                <label class="inputbox__label">
+                                    State
+                                </label>
+                            </div>
+                            <div class="inputbox">
+                                <input class="inputbox__input" type="text" placeholder="" v-model="city" />
+                                <label class="inputbox__label">
+                                    City
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="formarea">
+                            <div class="inputbox full">
+                                <div class="waitlist-options">
+                                    <span class="waitlist-option" v-for="option in options" @click="selectoption(option)"
+                                        :class="{ greencolor: selectedoptions.includes(option) }">{{ option }}</span>
+                                </div>
+                                <label class="inputbox__label greencolor">
+                                    What is most important to you when you shop for foodstuff?
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="formarea button-area">
+                            <div class="inputbox full">
+                                <button class="button primary">Join waitlist</button>
+                            </div>
                         </div>
                     </div>
 
@@ -155,6 +157,10 @@ export default {
         left: 0;
         top: 0;
         z-index: 10;
+
+        @media only screen and (max-width: 768px) {
+            //position: relative
+        }
     }
 
     &__content {
