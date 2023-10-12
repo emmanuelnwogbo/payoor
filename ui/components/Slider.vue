@@ -97,7 +97,7 @@ export default {
             }, 3000)
         },
         waitlistform() {
-            this.router.push('/waitlist');
+            this.$router.push('/waitlist');
         }
     },
     mounted() {
