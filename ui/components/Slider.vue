@@ -58,7 +58,7 @@
                     right: current === 1,
                     offcreen: current === 3 || current === 1
                 }" />
-                <img src="@/assets/imgs/mud desktop.png" class="desktop" :class="{
+                <img src="@/assets/imgs/mud desktop.png" class="desktop up" :class="{
                     center: current === 2,
                     left: current === 3,
                     right: current === 1,
@@ -316,7 +316,6 @@ export default {
             height: #{scaleValue(1000)};
             z-index: 1;
             width: #{scaleValue(1600)};
-            background: red;
             overflow: hidden;
             display: flex;
             justify-content: center;
@@ -426,6 +425,10 @@ export default {
 
                 &.right {
                     opacity: 0;
+                }
+
+                &.up {
+                    transform: translateY(#{scaleValue(-10)});
                 }
             }
         }
