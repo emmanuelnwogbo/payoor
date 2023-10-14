@@ -1,7 +1,13 @@
 <template>
   <div>
     <div class="landing">
-      <Slider />
+      <div class="mobile">
+        <Slider />
+      </div>
+
+      <div class="desktop-block">
+        <WaitlistPage />
+    </div>
     </div>
   </div>
 </template>
@@ -13,5 +19,6 @@ export default {}
 <style lang="scss" scoped>
 .landing {
   
+
 }
 </style>

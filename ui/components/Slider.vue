@@ -28,7 +28,7 @@
                     left: current === 3,
                     right: current === 1,
                     offcreen: current === 3 || current === 1
-                }">"Eyaah, sorry madame"</span>
+                }">"Eyaah, sorry madam"</span>
                 <span :class="{
                     center: current === 3,
                     left: current === 1,

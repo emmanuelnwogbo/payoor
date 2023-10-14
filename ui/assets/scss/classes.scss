@@ -403,6 +403,46 @@
     }
 }
 
+.desktop-block {
+    display: block;
+
+    @media only screen and (max-width: 320px) {
+        display: none;
+    }
+
+    @media only screen and (max-width: 360px) {
+        display: none;
+    }
+
+    @media only screen and (max-width: 375px) {
+        display: none;
+    }
+
+    @media only screen and (max-width: 414px) {
+        display: none;
+    }
+
+    @media only screen and (max-width: 480px) {
+        display: none;
+    }
+
+    @media only screen and (max-width: 540px) {
+        display: none;
+    }
+
+    @media only screen and (max-width: 600px) {
+        display: none;
+    }
+
+    @media only screen and (max-width: 720px) {
+        display: none;
+    }
+
+    @media only screen and (max-width: 768px) {
+        display: none;
+    }
+}   
+
 .mobile {
     display: none;
 
@@ -585,4 +625,18 @@
     top: 0;
     left: 0;
     z-index: 20;
+}
+
+.desktop-social-svg {
+    height: #{scaleValue(23)};
+    width: #{scaleValue(23)};
+    cursor: pointer;
+    margin-left: #{scaleValue(50)};
+
+    
+    & svg {
+        height: 100%;
+        width: 100%;
+        fill: $white;
+    }
 }
