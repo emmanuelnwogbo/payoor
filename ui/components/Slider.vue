@@ -15,7 +15,9 @@
             </span>
         </div>
 
-        <div class="mobile sliderlanding__sidenav" v-if="sidenav" @click="sidenavtog">
+        <div class="mobile sliderlanding__sidenav" :class="{
+            open: sidenav
+        }" @click="sidenavtog">
             <div class="sliderlanding__sidenav--body">
                 <div class="fixed-header-white mobile sliderlanding__sidenav--logo">
                     <figure class="waitlist__logo logo mobile">
@@ -149,6 +151,12 @@ export default {
         width: 100vw;
         background: rgba($font-color, .5);
         z-index: 70;
+        transform: translateX(100%);
+        transition: all .2s ease;
+
+        &.open {
+            transform: translateX(0);
+        }
 
         &--body {
             position: absolute;
