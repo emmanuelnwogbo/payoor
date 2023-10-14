@@ -380,9 +380,9 @@ export default {
             }
 
             &.mudsplash {
-                width: #{scaleValue(1200)};
-                height: #{scaleValue(740)};
-                transform: translateX(#{scaleValue(90)})
+                width: #{scaleValue(1150)};
+                height: #{scaleValue(730)};
+                transform: translateX(#{scaleValue(76)})
                 /*translateY(#{scaleValue(-90)})*/
                 ;
             }
