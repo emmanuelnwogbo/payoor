@@ -379,7 +379,7 @@ export default {
             &.mudsplash {
                 width: #{scaleValue(1150)};
                 height: #{scaleValue(730)};
-                transform: translateX(#{scaleValue(76)});
+                transform: translateX(#{scaleValue(70)});
             }
 
             &.police {
