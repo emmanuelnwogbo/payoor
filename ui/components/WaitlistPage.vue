@@ -360,7 +360,7 @@ export default {
     }
 
     &__image {
-        width: 100%;
+        width: #{scaleValue(800)};
         display: flex;
         justify-content: center;
         position: absolute;
@@ -370,21 +370,16 @@ export default {
         & img {
             object-fit: cover;
             transition: all .5s ease;
-            height: 100%;
 
             &.bike {
                 width: #{scaleValue(1200)};
-                transform: translateX(#{scaleValue(-40)})
-                /*translateY(#{scaleValue(-40)})*/
-                ;
+                transform: translateX(#{scaleValue(-40)});
             }
 
             &.mudsplash {
                 width: #{scaleValue(1150)};
                 height: #{scaleValue(730)};
-                transform: translateX(#{scaleValue(76)})
-                /*translateY(#{scaleValue(-90)})*/
-                ;
+                transform: translateX(#{scaleValue(76)});
             }
 
             &.police {
