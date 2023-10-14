@@ -6,13 +6,36 @@
                     <img src="@/assets/imgs/payoor-white-logo.png" />
                 </figure>
             </div>
-            <span class="burger whiteburger">
+            <span class="burger whiteburger" @click="sidenavtog">
                 <svg xmlns="http://www.w3.org/2000/svg" width="37" height="17" viewBox="0 0 37 17" fill="none">
                     <rect x="0.223877" y="0.671631" width="26.2687" height="2.62687" fill="white" />
                     <rect x="0.223877" y="7.2388" width="36.7761" height="2.62687" fill="white" />
                     <rect x="0.223877" y="13.806" width="31.5224" height="2.62687" fill="white" />
                 </svg>
             </span>
+        </div>
+
+        <div class="mobile sliderlanding__sidenav" v-if="sidenav" @click="sidenavtog">
+            <div class="sliderlanding__sidenav--body">
+                <div class="fixed-header-white mobile sliderlanding__sidenav--logo">
+                    <figure class="waitlist__logo logo mobile">
+                        <img src="@/assets/imgs/payoor-green-two.svg" />
+                    </figure>
+                </div>
+
+                <div class="sliderlanding__sidenav--socials">
+                    <span class="sliderlanding__sidenav--socialsvg">
+                        <svg class="">
+                            <use xlink:href="@/assets/imgs/sprite.svg#icon-instagram"></use>
+                        </svg>
+                    </span>
+                    <span class="sliderlanding__sidenav--socialsvg">
+                        <svg class="">
+                            <use xlink:href="@/assets/imgs/sprite.svg#icon-twitter"></use>
+                        </svg>
+                    </span>
+                </div>
+            </div>
         </div>
 
         <div class="sliderlanding__slide">
@@ -79,10 +102,14 @@
 export default {
     data() {
         return {
-            current: 1
+            current: 1,
+            sidenav: false
         }
     },
     methods: {
+        sidenavtog() {
+            this.sidenav ? this.sidenav = false : this.sidenav = true;
+        },
         timefunction() {
             setInterval(() => {
                 if (this.current === 3) {
@@ -113,6 +140,45 @@ export default {
     height: 100vh;
     width: 100vw;
     overflow: hidden;
+
+    &__sidenav {
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: 100vw;
+        background: rgba($font-color, .5);
+        z-index: 70;
+
+        &--body {
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            width: #{scaleValue(1500)};
+            background: $white;
+            padding-top: #{scaleValue(300)};
+        }
+
+        &--logo {
+            transform: translateX(#{scaleValue(100)})
+        }
+
+        &--socials {
+            display: flex;
+            padding: #{scaleValue(40)} #{scaleValue(70)};
+        }
+
+        &--socialsvg {
+            margin-right: #{scaleValue(120)};
+
+            & svg {
+                height: #{scaleValue(100)};
+                width: #{scaleValue(100)};
+                fill: rgba($svg-color, .7);
+            }
+        }
+    }
 
     &__slide {
         padding: #{scaleValue(70)};

@@ -723,4 +723,11 @@
         width: 100%;
         fill: $white;
     }
+
+    &.green {
+
+        & svg {
+            fill: $primary-color;
+        }
+    }
 }
