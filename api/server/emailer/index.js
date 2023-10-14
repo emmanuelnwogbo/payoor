@@ -38,7 +38,7 @@ const sendEmail = async (recipientEmail, name) => {
 
     try {
         const res = await AWS_SES.sendEmail(params).promise();
-        console.log('Email has been sent!', res)
+        console.log('Email has been sent!', res);
     } catch (error) {
         console.log(error)
     }
