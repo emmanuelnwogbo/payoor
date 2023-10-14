@@ -139,6 +139,11 @@
 
                     <div class="formarea">
                         <div class="inputbox">
+                            <span class="inputbox__dropdownsvg">
+                                <svg class="">
+                                    <use xlink:href="@/assets/imgs/sprite.svg#icon-chevron-down"></use>
+                                </svg>
+                            </span>
                             <input class="inputbox__input" type="text" placeholder="" v-model="state" />
                             <label class="inputbox__label">
                                 State
@@ -195,10 +200,21 @@ export default {
                 'Save money',
                 'Eat healthy',
                 'Improve my cooking routine',
-            ]
+            ],
+            nigerianStates: [
+                "Abuja FCT", "Abia", "Adamawa", "Akwa Ibom", "Anambra", "Bauchi", "Bayelsa", "Benue",
+                "Borno", "Cross River", "Delta", "Ebonyi", "Edo", "Ekiti", "Enugu", "Gombe",
+                "Imo", "Jigawa", "Kaduna", "Kano", "Katsina", "Kebbi", "Kogi", "Kwara",
+                "Lagos", "Nasarawa", "Niger", "Ogun", "Ondo", "Osun", "Oyo", "Plateau",
+                "Rivers", "Sokoto", "Taraba", "Yobe", "Zamfara"
+            ],
+            dropdownopn: true
         }
     },
     methods: {
+        showdropdown() {
+            this.dropdownopn ? this.dropdownopn = false : this.dropdownopn = true;
+        },
         timefunction() {
             setInterval(() => {
                 if (this.current === 3) {
@@ -388,6 +404,7 @@ export default {
         position: relative;
         padding: #{scaleValue(20)} #{scaleValue(50)};
         padding-top: #{scaleValue(100)};
+        z-index: 8;
 
         @media only screen and (max-width: 768px) {
             padding: #{scaleValue(20)} #{scaleValue(90)};

@@ -538,6 +538,35 @@
             border-radius: #{scaleValue(20)} !important;
         }
     }
+
+    &__dropdownsvg {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        padding: #{scaleValue(16)};
+        display: flex;
+        align-items: center;
+        height: #{scaleValue(60)};
+        background: transparent;
+        width: 100%;
+        cursor: pointer;
+
+        @media only screen and (max-width: 768px) {
+            height: #{scaleValue(180)};
+            padding: #{scaleValue(40)};
+        }
+
+        & svg {
+            fill: rgba($svg-color, .7);
+            height: #{scaleValue(18)};
+            width: #{scaleValue(20)};
+
+            @media only screen and (max-width: 768px) {
+                height: #{scaleValue(60)};
+                width: #{scaleValue(60)};
+            }
+        }
+    }
 }
 
 .inputbox__label {
