@@ -137,14 +137,20 @@
                         </div>
                     </div>
 
-                    <div class="formarea">
+                    <div class="formarea withdropdown">
                         <div class="inputbox">
-                            <span class="inputbox__dropdownsvg">
+                            <span class="inputbox__dropdownsvg" @click.stop="toggledropdown">
                                 <svg class="">
                                     <use xlink:href="@/assets/imgs/sprite.svg#icon-chevron-down"></use>
                                 </svg>
                             </span>
-                            <input class="inputbox__input" type="text" placeholder="" v-model="state" />
+                            <div class="input__dropdown" v-if="dropdownopn">
+                                <div v-for="nigerianstate in nigerianstates" class="input__dropdown--item"
+                                    @click.stop="toggledropdown(nigerianstate)">
+                                    {{ nigerianstate }}
+                                </div>
+                            </div>
+                            <input class="inputbox__input dropdown" type="text" placeholder="" v-model="state" />
                             <label class="inputbox__label">
                                 State
                             </label>
@@ -201,19 +207,23 @@ export default {
                 'Eat healthy',
                 'Improve my cooking routine',
             ],
-            nigerianStates: [
+            nigerianstates: [
                 "Abuja FCT", "Abia", "Adamawa", "Akwa Ibom", "Anambra", "Bauchi", "Bayelsa", "Benue",
                 "Borno", "Cross River", "Delta", "Ebonyi", "Edo", "Ekiti", "Enugu", "Gombe",
                 "Imo", "Jigawa", "Kaduna", "Kano", "Katsina", "Kebbi", "Kogi", "Kwara",
                 "Lagos", "Nasarawa", "Niger", "Ogun", "Ondo", "Osun", "Oyo", "Plateau",
                 "Rivers", "Sokoto", "Taraba", "Yobe", "Zamfara"
             ],
-            dropdownopn: true
+            dropdownopn: false
         }
     },
     methods: {
-        showdropdown() {
-            this.dropdownopn ? this.dropdownopn = false : this.dropdownopn = true;
+        toggledropdown(state) {
+            if (this.nigerianstates.includes(state)) {
+                this.state = state;
+            }
+
+            return this.dropdownopn ? this.dropdownopn = false : this.dropdownopn = true;
         },
         timefunction() {
             setInterval(() => {

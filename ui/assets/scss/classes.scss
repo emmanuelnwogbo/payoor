@@ -514,6 +514,10 @@
    &.button-area {
       margin-top: #{scaleValue(60)};
    }
+   
+   &.withdropdown {
+    z-index: 7;
+   }
 }
 
 .inputbox {
@@ -550,6 +554,7 @@
         background: transparent;
         width: 100%;
         cursor: pointer;
+        padding-top: #{scaleValue(23)};
 
         @media only screen and (max-width: 768px) {
             height: #{scaleValue(180)};
@@ -565,6 +570,48 @@
                 height: #{scaleValue(60)};
                 width: #{scaleValue(60)};
             }
+        }
+    }
+}
+
+.input__dropdown {
+    background: $white;
+    position: absolute;
+    left: 0;
+    top: #{scaleValue(90)};
+    width: 100%;
+    overflow: scroll;
+    height: #{scaleValue(260)};
+    border-radius: 4px;
+    border: 1px solid rgba($svg-color, .7);
+
+    @media only screen and (max-width: 768px) {
+        height: #{scaleValue(700)};
+        top: #{scaleValue(280)};
+        width: 140%;
+    }
+
+    &--item {
+        position: relative;
+        padding: #{scaleValue(15)} #{scaleValue(20)};
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid rgba($svg-color, .4);
+        font-size: #{scaleValue(13)};
+        cursor: pointer;
+        color: rgba($svg-color, .9);
+
+        @media only screen and (max-width: 768px) {
+            font-size: #{scaleValue(50)};
+            padding: #{scaleValue(50)} #{scaleValue(40)};
+        }
+
+        &:hover {
+            background: rgba($primary-color, .1);
+        }
+
+        &:last-child {
+            border: none
         }
     }
 }
@@ -591,6 +638,14 @@
     outline: none;
     padding: #{scaleValue(20)};
     transition: all .5s ease;
+
+    &.dropdown {
+        padding: #{scaleValue(20)} #{scaleValue(35)};
+
+        @media only screen and (max-width: 768px) {
+            padding: #{scaleValue(20)} #{scaleValue(100)};
+        }
+    }
 
     @media only screen and (max-width: 768px) {
         height: #{scaleValue(180)};
