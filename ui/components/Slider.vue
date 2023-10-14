@@ -17,7 +17,7 @@
 
         <div class="mobile sliderlanding__sidenav" :class="{
             open: sidenav
-        }" @click="sidenavtog">
+        }" @click.stop="sidenavtog">
             <div class="sliderlanding__sidenav--body">
                 <div class="fixed-header-white mobile sliderlanding__sidenav--logo">
                     <figure class="waitlist__logo logo mobile">
@@ -26,12 +26,12 @@
                 </div>
 
                 <div class="sliderlanding__sidenav--socials">
-                    <span class="sliderlanding__sidenav--socialsvg">
+                    <span class="sliderlanding__sidenav--socialsvg"  @click.stop="openInstagramLink">
                         <svg class="">
                             <use xlink:href="@/assets/imgs/sprite.svg#icon-instagram"></use>
                         </svg>
                     </span>
-                    <span class="sliderlanding__sidenav--socialsvg">
+                    <span class="sliderlanding__sidenav--socialsvg" @click.stop="openTwitterLink">
                         <svg class="">
                             <use xlink:href="@/assets/imgs/sprite.svg#icon-twitter"></use>
                         </svg>
@@ -109,6 +109,14 @@ export default {
         }
     },
     methods: {
+        openTwitterLink() {
+            const url = "https://twitter.com/mypayoor?s=11";
+            window.open(url, "_blank");
+        },
+        openInstagramLink() {
+            const url = "https://www.instagram.com/mypayoor/?igshid=MzRlODBiNWFlZA%3D%3D";
+            window.open(url, "_blank");
+        },
         sidenavtog() {
             this.sidenav ? this.sidenav = false : this.sidenav = true;
         },
@@ -122,7 +130,6 @@ export default {
                     this.current = tracker;
                 }
 
-                console.log(this.current)
             }, 3000)
         },
         waitlistform() {
@@ -179,6 +186,8 @@ export default {
 
         &--socialsvg {
             margin-right: #{scaleValue(120)};
+            padding: #{scaleValue(100)};
+            padding-left: 0;
 
             & svg {
                 height: #{scaleValue(100)};

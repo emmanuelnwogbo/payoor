@@ -9,6 +9,8 @@ import bodyParser from 'body-parser';
 import path from 'path';
 import cors from 'cors';
 
+import waitlist from './emailer/routes/waitlist'
+
 import mongoose from 'mongoose';
 
 const app = express();
@@ -18,10 +20,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
 
+app.use(waitlist);
+
 const PORT = process.env.PORT || 8080;
 const server = http.createServer(app);
 
-mongoose.connect('mongodb://127.0.0.1:27017/payoor', {
+mongoose.connect(process.env.DB, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(() => {

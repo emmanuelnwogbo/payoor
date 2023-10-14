@@ -11,12 +11,12 @@
                     </figure>
 
                     <div class="waitlist__socials">
-                        <span class="desktop-social-svg">
+                        <span class="desktop-social-svg" @click="openInstagramLink">
                             <svg class="feature__icon">
                                 <use xlink:href="@/assets/imgs/sprite.svg#icon-instagram"></use>
                             </svg>
                         </span>
-                        <span class="desktop-social-svg">
+                        <span class="desktop-social-svg" @click="openTwitterLink">
                             <svg class="feature__icon">
                                 <use xlink:href="@/assets/imgs/sprite.svg#icon-twitter"></use>
                             </svg>
@@ -107,13 +107,17 @@
                     <div class="formarea">
                         <div class="inputbox">
                             <input class="inputbox__input" type="text" placeholder="" v-model="firstname" />
-                            <label class="inputbox__label">
+                            <label class="inputbox__label" :class="{
+                                errortext: firstnameError
+                            }">
                                 First name
                             </label>
                         </div>
                         <div class="inputbox">
                             <input class="inputbox__input" type="text" placeholder="" v-model="lastname" />
-                            <label class="inputbox__label">
+                            <label class="inputbox__label" :class="{
+                                errortext: lastnameError
+                            }">
                                 Last name
                             </label>
                         </div>
@@ -122,7 +126,9 @@
                     <div class="formarea">
                         <div class="inputbox full">
                             <input class="inputbox__input" type="email" placeholder="" v-model="email" />
-                            <label class="inputbox__label">
+                            <label class="inputbox__label" :class="{
+                                errortext: emailError
+                            }">
                                 Email
                             </label>
                         </div>
@@ -131,7 +137,9 @@
                     <div class="formarea">
                         <div class="inputbox full">
                             <input class="inputbox__input" type="text" placeholder="" v-model="phonenumber" />
-                            <label class="inputbox__label">
+                            <label class="inputbox__label" :class="{
+                                errortext: phonenumberError
+                            }">
                                 Phone number
                             </label>
                         </div>
@@ -157,7 +165,9 @@
                         </div>
                         <div class="inputbox">
                             <input class="inputbox__input" type="text" placeholder="" v-model="city" />
-                            <label class="inputbox__label">
+                            <label class="inputbox__label" :class="{
+                                errortext: cityError
+                            }">
                                 City
                             </label>
                         </div>
@@ -169,15 +179,20 @@
                                 <span class="waitlist-option" v-for="option in options" @click="selectoption(option)"
                                     :class="{ greencolor: selectedoptions.includes(option) }">{{ option }}</span>
                             </div>
-                            <label class="inputbox__label greencolor">
+                            <label class="inputbox__label greencolor" :class="{
+                                errortext: selectedoptionsError
+                            }">
                                 What is most important to you when you shop for foodstuff?
                             </label>
                         </div>
                     </div>
 
                     <div class="formarea button-area">
-                        <div class="inputbox full">
+                        <div class="inputbox full" v-if="allowsubmit" @click="submit">
                             <button class="button primary">Join waitlist</button>
+                        </div>
+                        <div class="inputbox full" v-if="!allowsubmit" @click="triggersubmit">
+                            <button class="button primary faint">Join waitlist</button>
                         </div>
                     </div>
                 </div>
@@ -201,6 +216,13 @@ export default {
             state: "",
             city: "",
             selectedoptions: [],
+            firstnameError: null,
+            lastnameError: null,
+            emailError: null,
+            phonenumberError: null,
+            stateError: null,
+            cityError: null,
+            selectedoptionsError: null,
             options: [
                 'Save time',
                 'Save money',
@@ -217,7 +239,127 @@ export default {
             dropdownopn: false
         }
     },
+    computed: {
+        allowsubmit() {
+            const { firstname, lastname, email, phonenumber, state, city, selectedoptions } = this;
+
+            if (firstname.length && lastname.length && email.length && phonenumber.length && state.length && city.length && selectedoptions.length) {
+
+                if (this.isValidEmail(email.trim()) &&
+                    this.containsOnlyNumbers(phonenumber.trim()) &&
+                    this.containsOnlyLetters(firstname.trim()) &&
+                    this.containsOnlyLetters(lastname.trim()) &&
+                    this.containsOnlyLetters(state.trim()) &&
+                    this.containsOnlyLetters(city.trim())
+                ) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+    },
+    watch: {
+        firstname(newFirstName, oldFirstName) {
+            if (!newFirstName.trim().length) {
+                this.firstnameError = true;
+            } else {
+                this.firstnameError = false;
+            }
+        },
+        lastname(newLastName, oldLastName) {
+            if (!newLastName.trim().length) {
+                this.lastnameError = true;
+            } else {
+                this.lastnameError = false;
+            }
+        },
+        email(newEmail, oldEmail) {
+            if (!this.isValidEmail(newEmail)) {
+                this.emailError = true;
+            } else {
+                this.emailError = false;
+            }
+        },
+        phonenumber(newPhoneNumber, oldPhoneNumber) {
+            if (!newPhoneNumber.trim().length || !this.containsOnlyNumbers(newPhoneNumber.trim())) {
+                this.phonenumberError = true;
+            } else {
+                this.phonenumberError = false;
+            }
+        },
+        state(newState, oldState) { },
+        city(newCity, oldCity) {
+            if (!newCity.length) {
+                this.cityError = true;
+            } else {
+                this.cityError = false;
+            }
+        },
+        selectedoptions(newSelectedOptions, oldSelectedOptions) {
+            if (!newSelectedOptions.length) {
+                this.selectedoptionsError = true;
+            } else {
+                this.selectedoptionsError = false;
+            }
+        },
+    },
     methods: {
+        openTwitterLink() {
+            const url = "https://twitter.com/mypayoor?s=11";
+            window.open(url, "_blank");
+        },
+        openInstagramLink() {
+            const url = "https://www.instagram.com/mypayoor/?igshid=MzRlODBiNWFlZA%3D%3D";
+            window.open(url, "_blank");
+        },
+        containsOnlyLetters(input) {
+            const letterRegex = /^[A-Za-z]+$/;
+            return letterRegex.test(input);
+        },
+        containsOnlyNumbers(input) {
+            const numberRegex = /^[0-9]+$/;
+            return numberRegex.test(input);
+        },
+        hasSpecificLength(input, length) {
+            return input.length === length;
+        },
+        isValidEmail(input) {
+            const emailRegex = /^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
+            return emailRegex.test(input);
+        },
+        triggersubmit() {
+            const { submit } = this;
+
+            submit()
+        },
+        async submit() {
+            const url = `http://localhost:8080`;
+
+            return new Promise((resolve, reject) => {
+                const { firstname, lastname, email, phonenumber, state, city, selectedoptions } = this;
+
+                try {
+                    fetch(`${url}/waitlist`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            firstname,
+                            lastname,
+                            email,
+                            phonenumber,
+                            state,
+                            city,
+                            selectedoptions
+                        })
+                    })
+                } catch (error) {
+                    console.log(error)
+                }
+            })
+        },
         toggledropdown(state) {
             if (this.nigerianstates.includes(state)) {
                 this.state = state;
@@ -235,7 +377,6 @@ export default {
                     this.current = tracker;
                 }
 
-                console.log(this.current)
             }, 3000)
         },
         selectoption(option) {

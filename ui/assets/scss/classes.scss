@@ -35,6 +35,7 @@
     outline: none;
     background: transparent;
     text-align: center;
+    cursor: pointer;
 
     &.primary {
         background: $primary-color;
@@ -43,8 +44,8 @@
         color: $white;
     }
 
-    &.grey {
-
+    &.faint {
+        background: rgba($primary-color, .4);
     }
 }
 
@@ -730,4 +731,8 @@
             fill: $primary-color;
         }
     }
+}
+
+.errortext {
+    color: $red !important;
 }
