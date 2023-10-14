@@ -2,9 +2,31 @@
   "name": "api",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node dist/index.js",
+    "transpile": "babel ./server --out-dir dist",
+    "clean": "rimraf dist",
+    "build": "npm-run-all clean transpile",
+    "dev": "npm-run-all build start",
+    "watch:dev": "nodemon"
+  },
+  "nodemonConfig": {
+    "exec": "npm run dev",
+    "watch": [
+      "server/*",
+      "public/*"
+    ],
+    "ignore": [
+      "**/__tests__/**",
+      "*.test.js",
+      "*.spec.js"
+    ]
   },
   "author": "",
   "license": "ISC",

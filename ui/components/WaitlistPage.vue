@@ -373,22 +373,22 @@ export default {
             height: 100%;
 
             &.bike {
-                width: 160%;
+                width: #{scaleValue(1200)};
                 transform: translateX(#{scaleValue(-40)})
                 /*translateY(#{scaleValue(-40)})*/
                 ;
             }
 
             &.mudsplash {
-                width: 220%;
-                height: 200%;
+                width: #{scaleValue(1200)};
+                height: #{scaleValue(740)};
                 transform: translateX(#{scaleValue(90)})
                 /*translateY(#{scaleValue(-90)})*/
                 ;
             }
 
             &.police {
-                width: 60%;
+                width: #{scaleValue(500)};
             }
 
             &.offcreen {
