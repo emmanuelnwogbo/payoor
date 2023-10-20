@@ -5,6 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 var _express = _interopRequireDefault(require("express"));
+var _functions = _interopRequireDefault(require("../functions"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 var waitlist = (0, _express["default"])();
 waitlist.post('/waitlist', function (req, res) {
