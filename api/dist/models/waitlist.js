@@ -29,7 +29,14 @@ var waitlistSchema = new Schema({
     required: true
   },
   selectedoptions: {
-    type: [String]
+    type: Array,
+    "default": [{
+      type: String
+    }]
+  },
+  emailsent: {
+    type: Boolean,
+    "default": false
   }
 });
 var Waitlist = mongoose.model('Waitlist', waitlistSchema);

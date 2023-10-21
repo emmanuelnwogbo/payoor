@@ -9,7 +9,7 @@ import bodyParser from 'body-parser';
 import path from 'path';
 import cors from 'cors';
 
-import waitlist from './emailer/routes/waitlist'
+import waitlistroute from './emailer/routes/waitlist'
 
 import mongoose from 'mongoose';
 
@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
 
-app.use(waitlist);
+app.use(waitlistroute);
 
 const PORT = process.env.PORT || 8080;
 const server = http.createServer(app);

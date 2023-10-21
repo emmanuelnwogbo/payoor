@@ -44,6 +44,7 @@ export default {
       '~/assets/scss/shop.scss',
       '~/assets/scss/classes.scss',
       '~/assets/scss/fonts.scss',
+      '~/assets/scss/animations.scss',
     ],
     hoistUseStatements: true
   },

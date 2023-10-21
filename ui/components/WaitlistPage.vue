@@ -1,9 +1,23 @@
 <template>
     <div class="waitlist">
 
+        <div class="waitlist__emailsent" v-if="feedbackopen">
+            <div class="waitlist__emailsent--text">
+                <div class="waitlist__emailsent--svgarea">
+                    <div></div>
+                    <span class="waitlist__emailsent--svg" @click="closefeedback">
+                        <svg class="feature__icon">
+                            <use xlink:href="@/assets/imgs/sprite.svg#icon-x-altx-alt"></use>
+                        </svg> 
+                    </span>
+                </div>
+                <p>Thanks for signing up to or waitlist</p>
+                <p>kindly check your mail for a message from us</p>
+            </div>
+        </div>
+
         <div class="waitlist__content">
             <div class="waitlist__photo waitlist__flexarea">
-
 
                 <div class="waitlist__textimg">
                     <figure class="waitlist__logo logo">
@@ -208,6 +222,7 @@
 export default {
     data() {
         return {
+            feedbackopen: false,
             current: 1,
             firstname: "",
             lastname: "",
@@ -230,7 +245,7 @@ export default {
                 'Improve my cooking routine',
             ],
             nigerianstates: [
-                "Abuja FCT", "Abia", "Adamawa", "Akwa Ibom", "Anambra", "Bauchi", "Bayelsa", "Benue",
+                "AbujaFCT", "Abia", "Adamawa", "Akwa Ibom", "Anambra", "Bauchi", "Bayelsa", "Benue",
                 "Borno", "Cross River", "Delta", "Ebonyi", "Edo", "Ekiti", "Enugu", "Gombe",
                 "Imo", "Jigawa", "Kaduna", "Kano", "Katsina", "Kebbi", "Kogi", "Kwara",
                 "Lagos", "Nasarawa", "Niger", "Ogun", "Ondo", "Osun", "Oyo", "Plateau",
@@ -305,6 +320,9 @@ export default {
         },
     },
     methods: {
+        closefeedback() {
+            this.feedbackopen = false;
+        },
         openTwitterLink() {
             const url = "https://twitter.com/mypayoor?s=11";
             window.open(url, "_blank");
@@ -336,29 +354,27 @@ export default {
         async submit() {
             const url = `http://localhost:8080`;
 
-            return new Promise((resolve, reject) => {
-                const { firstname, lastname, email, phonenumber, state, city, selectedoptions } = this;
+            const { firstname, lastname, email, phonenumber, state, city, selectedoptions } = this;
 
-                try {
-                    fetch(`${url}/waitlist`, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            firstname,
-                            lastname,
-                            email,
-                            phonenumber,
-                            state,
-                            city,
-                            selectedoptions
-                        })
+            try {
+                const data = await fetch(`${url}/waitlist`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        firstname,
+                        lastname,
+                        email,
+                        phonenumber,
+                        state,
+                        city,
+                        selectedoptions
                     })
-                } catch (error) {
-                    console.log(error)
-                }
-            })
+                })
+            } catch (error) {
+                console.log(error)
+            }
         },
         toggledropdown(state) {
             if (this.nigerianstates.includes(state)) {
@@ -555,6 +571,64 @@ export default {
         @media only screen and (max-width: 768px) {
             padding: #{scaleValue(20)} #{scaleValue(90)};
             padding-top: #{scaleValue(500)};
+        }
+    }
+
+    &__emailsent {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background: rgba(0, 0, 0, .4);
+        z-index: 30;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        animation: opacityIn 1s ease-in-out forwards;
+
+        &--text {
+            margin-top: #{scaleValue(90)};
+            background: $white;
+            padding: #{scaleValue(20)};
+            border-radius: #{scaleValue(5)};
+            color: $primary-color;
+            font-weight: 500;
+            font-size: #{scaleValue(15)};
+            line-height: #{scaleValue(25)};
+            transform: translateY(#{scaleValue(-100)});
+
+            animation: slideFromTop 1s ease-in-out forwards;
+
+            @media only screen and (max-width: 768px) {
+                padding: #{scaleValue(40)};
+                font-size: #{scaleValue(60)};
+                line-height: #{scaleValue(100)};
+                border-radius: #{scaleValue(15)};
+                width: #{scaleValue(1300)};
+                transform: translateY(#{scaleValue(-200)});
+            }
+        }
+
+        &--svgarea {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        &--svg {
+            cursor: pointer;
+
+            & svg {
+                height: #{scaleValue(15)};
+                width: #{scaleValue(15)};
+                fill: $primary-color;
+                margin-bottom: #{scaleValue(20)};
+
+                @media only screen and (max-width: 768px) {
+                    height: #{scaleValue(80)};
+                    width: #{scaleValue(80)};
+                }
+            }
         }
     }
 }

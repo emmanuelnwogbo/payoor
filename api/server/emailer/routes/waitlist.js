@@ -1,12 +1,30 @@
 import express from 'express';
 
-const waitlist = express();
+const waitlistroute = express();
+
+import Waitlist from '../../models/waitlist';
 import Emailer from '../functions';
 
-waitlist.post('/waitlist', (req, res) => {
-    const { firstname, lastname, email, phonenumber, state, city, selectedoptions } = req.body;
+waitlistroute.post('/waitlist', async (req, res) => {
+    try {
+        const { firstname, lastname, email, phonenumber, state, city, selectedoptions } = req.body;
 
-    console.log(firstname, lastname, email, phonenumber, state, city, selectedoptions)
+        const waitlistitem = new Waitlist({
+            firstname,
+            lastname,
+            email,
+            phonenumber,
+            state,
+            city,
+            selectedoptions
+        });
+
+        await waitlistitem.save();
+
+        console.log(waitlistitem);
+    } catch (error) {
+        res.status(500)
+    }
 });
 
-export default waitlist;
+export default waitlistroute;

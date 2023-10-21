@@ -1,0 +1,28 @@
+@keyframes slideFromTop {
+    0% {
+        transform: translateY(#{scaleValue(-150)});
+        opacity: 0;
+
+        @media only screen and (max-width: 768px) {
+            transform: translateY(#{scaleValue(-350)});
+        }
+    }
+    100% {
+        transform: translateY(#{scaleValue(-100)});
+        opacity: 1;
+
+        @media only screen and (max-width: 768px) {
+            transform: translateY(#{scaleValue(-300)});
+        }
+    }
+}
+
+@keyframes opacityIn {
+    0% {
+        background: rgba(0, 0, 0, 0);
+    }
+    100% {
+        background: rgba(0, 0, 0, .4);
+    }
+}
+
