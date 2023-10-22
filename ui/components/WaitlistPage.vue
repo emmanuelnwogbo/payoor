@@ -253,7 +253,7 @@ export default {
             servererrormessage: null,
             nigerianstatesearch: '',
             submitting: false,
-            feedbackopen: false,
+            feedbackopen: true,
             current: 1,
             firstname: "",
             lastname: "",
@@ -688,7 +688,7 @@ export default {
             }
 
             @media only screen and (max-width: 768px) {
-                padding: #{scaleValue(40)};
+                padding: #{scaleValue(60)};
                 font-size: #{scaleValue(60)};
                 line-height: #{scaleValue(100)};
                 border-radius: #{scaleValue(15)};
@@ -724,6 +724,12 @@ export default {
             position: relative;
             z-index: 1;
             transform: translateX(#{scaleValue(-30)}) translateY(#{scaleValue(20)});
+            
+            @media only screen and (max-width: 768px) {
+                height: #{scaleValue(360)};
+                width: #{scaleValue(360)};
+                transform: translateX(#{scaleValue(-120)}) translateY(#{scaleValue(20)});
+            }
 
             & img {
                 object-fit: cover;
