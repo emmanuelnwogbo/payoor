@@ -661,7 +661,7 @@
     transition: all .5s ease;
 
     @media only screen and (max-width: 768px) {
-        font-size: #{scaleValue(70)};
+        font-size: #{scaleValue(65)};
     }
 
     &.dropdown {
