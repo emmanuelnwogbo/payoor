@@ -253,7 +253,7 @@ export default {
             servererrormessage: null,
             nigerianstatesearch: '',
             submitting: false,
-            feedbackopen: true,
+            feedbackopen: false,
             current: 1,
             firstname: "",
             lastname: "",
