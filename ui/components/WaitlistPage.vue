@@ -488,6 +488,14 @@ export default {
     },
     mounted() {
         this.timefunction();
+
+        document.querySelector('input').addEventListener('focus', function() {
+            document.querySelector('meta[name="viewport"]').setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0');
+        });
+
+        document.querySelector('input').addEventListener('blur', function() {
+            document.querySelector('meta[name="viewport"]').setAttribute('content', 'width=device-width, initial-scale=1.0');
+        });
     }
 }
 </script>
