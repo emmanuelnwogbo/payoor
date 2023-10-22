@@ -31,18 +31,16 @@ function _send() {
           });
         case 4:
           data = _context.sent;
-          console.log(data, 'data');
           return _context.abrupt("return", data);
-        case 9:
-          _context.prev = 9;
+        case 8:
+          _context.prev = 8;
           _context.t0 = _context["catch"](1);
-          console.log(_context.t0, 'error');
           throw new Error('email sending failed, try again');
-        case 13:
+        case 11:
         case "end":
           return _context.stop();
       }
-    }, _callee, null, [[1, 9]]);
+    }, _callee, null, [[1, 8]]);
   }));
   return _send.apply(this, arguments);
 }

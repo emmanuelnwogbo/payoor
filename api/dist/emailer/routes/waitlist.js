@@ -73,6 +73,7 @@ waitlistroute.post('/waitlist', /*#__PURE__*/function () {
             };
           }())["catch"](function (error) {
             console.log(error);
+            console.log(error);
           });
         case 11:
           console.log(waitlistitem);

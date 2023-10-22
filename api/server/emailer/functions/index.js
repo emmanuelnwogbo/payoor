@@ -178,10 +178,10 @@ async function send({ email, firstname }) {
       `,
     });
 
-    console.log(data, 'data');
+    //console.log(data, 'data');
     return data;
   } catch (error) {
-    console.log(error, 'error')
+    //console.log(error, 'error')
     throw new Error('email sending failed, try again')
   }
 }
