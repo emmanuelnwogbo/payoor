@@ -17,6 +17,11 @@ if (process.env.NODE_ENV !== 'production') {
   require("dotenv").config();
 }
 var app = (0, _express["default"])();
+var corsOptions = {
+  origin: ['https://www.payoor.shop'],
+  optionsSuccessStatus: 200
+};
+app.use((0, _cors["default"])(corsOptions));
 app.use(_express["default"].json());
 app.use(_bodyParser["default"].urlencoded({
   extended: true

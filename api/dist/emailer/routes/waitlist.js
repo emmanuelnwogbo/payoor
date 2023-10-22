@@ -14,40 +14,106 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 var waitlistroute = (0, _express["default"])();
 waitlistroute.post('/waitlist', /*#__PURE__*/function () {
-  var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(req, res) {
-    var _req$body, firstname, lastname, email, phonenumber, state, city, selectedoptions, waitlistitem;
-    return _regeneratorRuntime().wrap(function _callee$(_context) {
-      while (1) switch (_context.prev = _context.next) {
+  var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(req, res) {
+    var _req$body, firstname, lastname, email, phonenumber, state, city, selectedoptions, registered, waitlistitem;
+    return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+      while (1) switch (_context2.prev = _context2.next) {
         case 0:
-          _context.prev = 0;
+          _context2.prev = 0;
           _req$body = req.body, firstname = _req$body.firstname, lastname = _req$body.lastname, email = _req$body.email, phonenumber = _req$body.phonenumber, state = _req$body.state, city = _req$body.city, selectedoptions = _req$body.selectedoptions;
+          _context2.next = 4;
+          return _waitlist["default"].findOne({
+            email: email
+          });
+        case 4:
+          registered = _context2.sent;
+          if (!registered) {
+            _context2.next = 8;
+            break;
+          }
+          res.status(405).send({
+            alreadyregistered: 'already registered'
+          });
+          return _context2.abrupt("return");
+        case 8:
           waitlistitem = new _waitlist["default"]({
             firstname: firstname,
             lastname: lastname,
-            email: email,
+            email: email.toLowerCase(),
             phonenumber: phonenumber,
             state: state,
             city: city,
             selectedoptions: selectedoptions
           });
-          _context.next = 5;
-          return waitlistitem.save();
-        case 5:
-          console.log(waitlistitem);
-          _context.next = 11;
-          break;
-        case 8:
-          _context.prev = 8;
-          _context.t0 = _context["catch"](0);
-          res.status(500);
+          _context2.next = 11;
+          return (0, _functions["default"])({
+            email: email.toLowerCase(),
+            firstname: firstname
+          }).then( /*#__PURE__*/function () {
+            var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(message) {
+              return _regeneratorRuntime().wrap(function _callee$(_context) {
+                while (1) switch (_context.prev = _context.next) {
+                  case 0:
+                    console.log(message, 'done here');
+                    waitlistitem.emailsent = true;
+                    _context.next = 4;
+                    return waitlistitem.save();
+                  case 4:
+                    res.status(201).send({
+                      successmessage: 'email sent, user added'
+                    });
+                  case 5:
+                  case "end":
+                    return _context.stop();
+                }
+              }, _callee);
+            }));
+            return function (_x3) {
+              return _ref2.apply(this, arguments);
+            };
+          }())["catch"](function (error) {
+            console.log(error);
+          });
         case 11:
+          console.log(waitlistitem);
+          _context2.next = 18;
+          break;
+        case 14:
+          _context2.prev = 14;
+          _context2.t0 = _context2["catch"](0);
+          console.log(_context2.t0);
+          throw new Error();
+        case 18:
         case "end":
-          return _context.stop();
+          return _context2.stop();
       }
-    }, _callee, null, [[0, 8]]);
+    }, _callee2, null, [[0, 14]]);
   }));
   return function (_x, _x2) {
     return _ref.apply(this, arguments);
+  };
+}());
+waitlistroute.get('/waitlist/HS3zHSv7F3zHS3zB%B%v7F', /*#__PURE__*/function () {
+  var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(req, res) {
+    var waitlst;
+    return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+      while (1) switch (_context3.prev = _context3.next) {
+        case 0:
+          _context3.next = 2;
+          return _waitlist["default"].find();
+        case 2:
+          waitlst = _context3.sent;
+          res.status(200).send({
+            waitlst: waitlst
+          });
+        case 4:
+        case "end":
+          return _context3.stop();
+      }
+    }, _callee3);
+  }));
+  return function (_x4, _x5) {
+    return _ref3.apply(this, arguments);
   };
 }());
 var _default = exports["default"] = waitlistroute;

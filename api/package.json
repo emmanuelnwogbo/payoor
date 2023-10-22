@@ -55,6 +55,7 @@
     "nodemailer": "^6.7.2",
     "protonmail-api": "^2.2.0",
     "regenerator-runtime": "^0.13.11",
+    "resend": "^1.1.0",
     "sharp": "^0.32.1",
     "telegraf": "^3.33.3",
     "validator": "^10.2.0"

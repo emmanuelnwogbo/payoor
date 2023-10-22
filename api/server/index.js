@@ -15,6 +15,13 @@ import mongoose from 'mongoose';
 
 const app = express();
 
+const corsOptions = {
+    origin: ['https://www.payoor.shop'],
+    optionsSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
+
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());

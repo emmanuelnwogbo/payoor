@@ -1,18 +1,38 @@
 <template>
     <div class="waitlist">
 
+        <input ref="blank" class="blank" v-model="nigerianstatesearch"/>
+
         <div class="waitlist__emailsent" v-if="feedbackopen">
             <div class="waitlist__emailsent--text">
                 <div class="waitlist__emailsent--svgarea">
-                    <div></div>
+                    <div class="waitlist__emailsent--logo">
+                        <img src="@/assets/imgs/logo-white-back.jpeg"/>
+                    </div>
                     <span class="waitlist__emailsent--svg" @click="closefeedback">
                         <svg class="feature__icon">
                             <use xlink:href="@/assets/imgs/sprite.svg#icon-x-altx-alt"></use>
                         </svg> 
                     </span>
                 </div>
-                <p>Thanks for signing up to or waitlist</p>
+                <p>Thanks for signing up to our waitlist</p>
                 <p>kindly check your mail for a message from us</p>
+            </div>
+        </div>
+
+        <div class="waitlist__emailsent" v-if="servererrormessage">
+            <div class="waitlist__emailsent--text">
+                <div class="waitlist__emailsent--svgarea">
+                    <div class="waitlist__emailsent--logo">
+                        <img src="@/assets/imgs/logo-white-back.jpeg"/>
+                    </div>
+                    <span class="waitlist__emailsent--svg" @click="closefeedback">
+                        <svg class="feature__icon">
+                            <use xlink:href="@/assets/imgs/sprite.svg#icon-x-altx-alt"></use>
+                        </svg> 
+                    </span>
+                </div>
+                <p>{{ servererrormessage }}</p>
             </div>
         </div>
 
@@ -167,12 +187,15 @@
                                 </svg>
                             </span>
                             <div class="input__dropdown" v-if="dropdownopn">
-                                <div v-for="nigerianstate in nigerianstates" class="input__dropdown--item"
-                                    @click.stop="toggledropdown(nigerianstate)">
+                                <div v-for="nigerianstate in nigerianstateslist" class="input__dropdown--item"
+                                    @click.stop="toggledropdown({ nigerianstate })">
                                     {{ nigerianstate }}
                                 </div>
                             </div>
-                            <input class="inputbox__input dropdown" type="text" placeholder="" v-model="state" />
+                            <input class="inputbox__input dropdown"
+                                type="text" placeholder="" 
+                                v-model="state" 
+                                ref="nigerianstate"/>
                             <label class="inputbox__label">
                                 State
                             </label>
@@ -202,11 +225,16 @@
                     </div>
 
                     <div class="formarea button-area">
-                        <div class="inputbox full" v-if="allowsubmit" @click="submit">
+                        <div class="inputbox full" v-if="allowsubmit && !submitting" @click="submit">
                             <button class="button primary">Join waitlist</button>
                         </div>
-                        <div class="inputbox full" v-if="!allowsubmit" @click="triggersubmit">
+                        <div class="inputbox full" v-if="!allowsubmit && !submitting">
                             <button class="button primary faint">Join waitlist</button>
+                        </div>
+                        <div class="inputbox full" v-if="submitting">
+                            <button class="button primary faint loading">
+                                <span></span>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -222,6 +250,9 @@
 export default {
     data() {
         return {
+            servererrormessage: null,
+            nigerianstatesearch: '',
+            submitting: false,
             feedbackopen: false,
             current: 1,
             firstname: "",
@@ -245,6 +276,13 @@ export default {
                 'Improve my cooking routine',
             ],
             nigerianstates: [
+                "AbujaFCT", "Abia", "Adamawa", "Akwa Ibom", "Anambra", "Bauchi", "Bayelsa", "Benue",
+                "Borno", "Cross River", "Delta", "Ebonyi", "Edo", "Ekiti", "Enugu", "Gombe",
+                "Imo", "Jigawa", "Kaduna", "Kano", "Katsina", "Kebbi", "Kogi", "Kwara",
+                "Lagos", "Nasarawa", "Niger", "Ogun", "Ondo", "Osun", "Oyo", "Plateau",
+                "Rivers", "Sokoto", "Taraba", "Yobe", "Zamfara"
+            ],
+            nigerianstateslist: [
                 "AbujaFCT", "Abia", "Adamawa", "Akwa Ibom", "Anambra", "Bauchi", "Bayelsa", "Benue",
                 "Borno", "Cross River", "Delta", "Ebonyi", "Edo", "Ekiti", "Enugu", "Gombe",
                 "Imo", "Jigawa", "Kaduna", "Kano", "Katsina", "Kebbi", "Kogi", "Kwara",
@@ -275,6 +313,20 @@ export default {
         }
     },
     watch: {
+        nigerianstatesearch(newval, oldval) {
+
+            const { nigerianstates } = this;
+
+            if (nigerianstates.length) {
+
+                const searchTerm = this.nigerianstatesearch.trim().toLowerCase()
+                const filtered = nigerianstates.filter(
+                    nigerianstate => nigerianstate.trim().toLowerCase().includes(searchTerm)
+                );
+
+                this.nigerianstateslist = filtered;
+            }
+        },
         firstname(newFirstName, oldFirstName) {
             if (!newFirstName.trim().length) {
                 this.firstnameError = true;
@@ -320,8 +372,20 @@ export default {
         },
     },
     methods: {
+        searchdropdown() {
+
+        },
+        capitalizeFirstLetter(word) {
+            if (!word || typeof word !== 'string') {
+                return '';
+            }
+
+            return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+        },
         closefeedback() {
             this.feedbackopen = false;
+            this.servererrormessage = null;
+            window.location.reload();
         },
         openTwitterLink() {
             const url = "https://twitter.com/mypayoor?s=11";
@@ -346,24 +410,21 @@ export default {
             const emailRegex = /^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
             return emailRegex.test(input);
         },
-        triggersubmit() {
-            const { submit } = this;
-
-            submit()
-        },
         async submit() {
             const url = `http://localhost:8080`;
 
-            const { firstname, lastname, email, phonenumber, state, city, selectedoptions } = this;
+            const { firstname, lastname, email, phonenumber, state, city, selectedoptions, capitalizeFirstLetter } = this;
 
             try {
-                const data = await fetch(`${url}/waitlist`, {
+                this.submitting = true;
+
+                const response = await fetch(`${url}/waitlist`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
-                        firstname,
+                        firstname: capitalizeFirstLetter(firstname),
                         lastname,
                         email,
                         phonenumber,
@@ -371,14 +432,32 @@ export default {
                         city,
                         selectedoptions
                     })
-                })
+                });
+
+                const data = await response.json();
+
+                if (data.alreadyregistered) {
+                    this.servererrormessage = `Looks like you're already in the waitlist`;
+
+                }
+
+                if (data.successmessage) {
+                    this.submitting = false
+                    this.feedbackopen = true;
+                }
             } catch (error) {
                 console.log(error)
             }
         },
-        toggledropdown(state) {
-            if (this.nigerianstates.includes(state)) {
-                this.state = state;
+        toggledropdown({ nigerianstate }) {
+            if (!nigerianstate) {
+                this.$refs.blank.focus();
+            }
+
+            if (nigerianstate && this.nigerianstates.includes(nigerianstate)) {
+                this.state = nigerianstate;
+                this.nigerianstateslist = this.nigerianstates;
+                this.nigerianstatesearch = '';
             }
 
             return this.dropdownopn ? this.dropdownopn = false : this.dropdownopn = true;
@@ -586,6 +665,7 @@ export default {
         justify-content: center;
         align-items: center;
         animation: opacityIn 1s ease-in-out forwards;
+        overflow: hidden;
 
         &--text {
             margin-top: #{scaleValue(90)};
@@ -597,8 +677,15 @@ export default {
             font-size: #{scaleValue(15)};
             line-height: #{scaleValue(25)};
             transform: translateY(#{scaleValue(-100)});
+            overflow: hidden;
 
             animation: slideFromTop 1s ease-in-out forwards;
+            position: relative;
+
+            & p {
+                position: relative;
+                z-index: 2;
+            }
 
             @media only screen and (max-width: 768px) {
                 padding: #{scaleValue(40)};
@@ -628,6 +715,20 @@ export default {
                     height: #{scaleValue(80)};
                     width: #{scaleValue(80)};
                 }
+            }
+        }
+
+        &--logo {
+            height: #{scaleValue(80)};
+            width: #{scaleValue(80)};
+            position: relative;
+            z-index: 1;
+            transform: translateX(#{scaleValue(-30)}) translateY(#{scaleValue(20)});
+
+            & img {
+                object-fit: cover;
+                height: 100%;
+                width: 100%;
             }
         }
     }
