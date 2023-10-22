@@ -411,7 +411,7 @@ export default {
             return emailRegex.test(input);
         },
         async submit() {
-            const url = `http://localhost:8080`;
+            const url = `https://payoor-9d404e2611d6.herokuapp.com`//`http://localhost:8080`;
 
             const { firstname, lastname, email, phonenumber, state, city, selectedoptions, capitalizeFirstLetter } = this;
 
