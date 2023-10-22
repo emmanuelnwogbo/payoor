@@ -660,6 +660,10 @@
     padding: #{scaleValue(20)};
     transition: all .5s ease;
 
+    @media only screen and (max-width: 768px) {
+        font-size: #{scaleValue(70)};
+    }
+
     &.dropdown {
         padding: #{scaleValue(20)} #{scaleValue(35)};
 
