@@ -458,6 +458,7 @@ export default {
                 this.state = nigerianstate;
                 this.nigerianstateslist = this.nigerianstates;
                 this.nigerianstatesearch = '';
+                this.$refs.blank.blur();
             }
 
             return this.dropdownopn ? this.dropdownopn = false : this.dropdownopn = true;
