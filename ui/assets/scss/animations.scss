@@ -40,3 +40,22 @@
     }
 }
 
+@keyframes translateYXAnimation {
+    0%, 100% {
+      transform: translateY(scaleValue(-75)) translateX(scaleValue(30));
+    }
+    
+    50% {
+      transform: translateY(scaleValue(-120)) translateX(scaleValue(30));
+    }
+}
+
+@keyframes translateYXAnimationMobile {
+    0%, 100% {
+        transform: translateY(scaleValue(-264)) translateX(scaleValue(80));
+    }
+    
+    50% {
+        transform: translateY(scaleValue(-440)) translateX(scaleValue(80));
+    }
+}

@@ -289,7 +289,7 @@ export default {
                 "Lagos", "Nasarawa", "Niger", "Ogun", "Ondo", "Osun", "Oyo", "Plateau",
                 "Rivers", "Sokoto", "Taraba", "Yobe", "Zamfara"
             ],
-            dropdownopn: false
+            dropdownopn: false,
         }
     },
     computed: {
@@ -372,9 +372,6 @@ export default {
         },
     },
     methods: {
-        searchdropdown() {
-
-        },
         capitalizeFirstLetter(word) {
             if (!word || typeof word !== 'string') {
                 return '';

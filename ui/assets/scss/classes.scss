@@ -772,3 +772,61 @@ input.blank {
     z-index: -1;
     opacity: 0;
 }
+
+.loadinganimation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background: $primary-color;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .5s ease;
+
+    &.pageloaded {
+        z-index: -1;
+        opacity: 0;
+    }
+
+    &__box {
+        display: flex;
+        flex-direction: column;
+
+        & span {
+            display: flex;
+            transition: all .5s ease;
+
+            & img {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+            }
+        }
+
+        &--smile {
+            height: #{scaleValue(150)};
+            width: #{scaleValue(150)};
+
+            @media only screen and (max-width: 768px) {
+                height: #{scaleValue(530)};
+                width: #{scaleValue(530)};
+            }
+        }
+
+        &--dot {
+            height: #{scaleValue(100)};
+            width: #{scaleValue(100)};
+
+            animation: translateYXAnimation 3s infinite; 
+
+            @media only screen and (max-width: 768px) {
+                height: #{scaleValue(400)};
+                width: #{scaleValue(400)};
+                animation: translateYXAnimationMobile 3s infinite; 
+            }
+        }
+    }
+}
