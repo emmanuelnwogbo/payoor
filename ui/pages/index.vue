@@ -30,7 +30,7 @@ export default {
   computed: {
     ...mapState({
       loaderon: (state) => state.loaderon,
-    }),
+    }), 
   },
   methods: {
     ...mapActions(["setloaderon", "setloaderoff"]),
