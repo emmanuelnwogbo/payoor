@@ -17,7 +17,7 @@ class SectionHeader extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SizedBox(height: 15.0),
+        const SizedBox(height: 10.0),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -31,7 +31,7 @@ class SectionHeader extends StatelessWidget {
               onPressed: () {
                 // Define the action to be taken when the button is pressed.
                 // For example, navigate to another screen or perform some action.
-                print('Button pressed');
+                //print('Button pressed');
               },
               child: Text(btntxt,
                   style: TextStyle(
@@ -42,7 +42,7 @@ class SectionHeader extends StatelessWidget {
             )
           ],
         ),
-        const SizedBox(height: 15.0),
+        const SizedBox(height: 10.0),
       ],
     );
   }
