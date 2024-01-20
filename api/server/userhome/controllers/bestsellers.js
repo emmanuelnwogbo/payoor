@@ -4,7 +4,7 @@ import product from '../../models/product';
 
 const bestsellers = express.Router();
 
-//notion secret_O9lBNQBv4iQlO0Txk54KWOiGnONMlzkHJhqBvUz75qh
+
 
 
 const bestsellersArray = [

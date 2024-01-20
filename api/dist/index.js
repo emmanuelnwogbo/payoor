@@ -20,7 +20,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 var app = (0, _express["default"])();
 var corsOptions = {
-  origin: ['https://www.payoor.shop', 'http://localhost:3000'],
+  origin: ['https://www.payoor.shop', 'https://main--musical-gingersnap-001e99.netlify.app/products/', 'http://localhost:3000'],
   optionsSuccessStatus: 200
 };
 app.use((0, _cors["default"])(corsOptions));
@@ -35,7 +35,7 @@ app.use(_bestsellers["default"]);
 app.use(_products["default"]);
 var PORT = process.env.PORT || 8080;
 var server = _http["default"].createServer(app);
-_mongoose["default"].connect(process.env.DB, {
+_mongoose["default"].connect('mongodb+srv://emmanuelnwogbo:Uj0SCbkKcVm0Pl2w@cluster0.qvqjc5c.mongodb.net', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }).then(function () {
