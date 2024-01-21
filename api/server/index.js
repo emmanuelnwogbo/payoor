@@ -20,7 +20,12 @@ import mongoose from 'mongoose';
 const app = express();
 
 const corsOptions = {
-    origin: ['https://www.payoor.shop', 'https://main--musical-gingersnap-001e99.netlify.app/products/', 'http://localhost:3000'],
+    origin: [
+        'https://www.payoor.shop',
+        'https://main--musical-gingersnap-001e99.netlify.app',
+        'http://localhost:3000',
+        'https://admin.payoor.shop'
+    ],
     optionsSuccessStatus: 200,
 };
 
@@ -40,7 +45,7 @@ app.use(admin_products_controller);
 const PORT = process.env.PORT || 8080;
 const server = http.createServer(app);
 
-mongoose.connect('mongodb+srv://emmanuelnwogbo:Uj0SCbkKcVm0Pl2w@cluster0.qvqjc5c.mongodb.net', {
+mongoose.connect(process.env.DB, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(() => {
