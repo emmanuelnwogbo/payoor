@@ -46,6 +46,8 @@ export default {
       '~/assets/scss/classes.scss',
       '~/assets/scss/fonts.scss',
       '~/assets/scss/animations.scss',
+      '~/assets/scss/header.scss',
+      '~/assets/scss/recipescard.scss',
     ],
     hoistUseStatements: true
   },
