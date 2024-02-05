@@ -49,6 +49,7 @@ export const actions = {
 
                 const { item } = data;
 
+                return item;
             }
         } catch (error) {
             console.error('There was an error!', error);
@@ -72,7 +73,7 @@ export const actions = {
                 const data = await response.json();
 
                 const { item } = data;
-
+                dispatch('getitems');
             }
         } catch (error) {
             console.error('There was an error!', error);
@@ -85,16 +86,11 @@ export const actions = {
 
         item[itemattribute] = value;
         itemslist[index] = item;
-        const newitem = item.newitem ? true : false;
 
         commit('SET_ITEM', item);
 
         try {
-            if (newitem) {
-                await dispatch('createitem', item);
-            } else {
-                await dispatch('updateitem', { itemid, itemattribute, value });
-            }
+            await dispatch('updateitem', { itemid, itemattribute, value });
         } catch (error) {
             console.error('There was an error!', error);
         }
@@ -102,8 +98,25 @@ export const actions = {
     async getitem({ commit }) {
 
     },
-    async deleteitem({ commit }) {
+    async deleteitem({ commit, dispatch }, itemid) {
+        try {
+            const response = await fetch(`${API_URL}/product/inventory/delete?productid=${itemid}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
 
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            if (response.status === 200) {
+                dispatch('getitems');
+            }
+        } catch (error) {
+            console.error('There was an error!', error);
+        }
     },
     async uploaditemimage({ commit }, { itemid, image }) {
         try {

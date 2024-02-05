@@ -5,9 +5,7 @@
       <div class="items">
         <div class="container__header items__header">
           <h1 class="items__h1"><span>Payoor</span> <span>Products</span></h1>
-          <h2 class="items__h2">
-            Product list management
-          </h2>
+          <h2 class="items__h2">Product list management</h2>
 
           <div class="items__search">
             <input placeholder="find an item" />
@@ -114,17 +112,13 @@ export default {
     this.getitems();
   },
   methods: {
-    ...mapActions("item", ["getitems"]),
+    ...mapActions("item", ["getitems", "createitem", "deleteitem"]),
     ...mapMutations("item", ["SET_ITEMS"]),
-    removeitem(itemid) {
-      const itemsarr = this.itemsarr.filter((item) => item._id !== itemid);
-
-      this.itemsarr = [...itemsarr];
-      this.SET_ITEMS(this.itemsarr);
+    async removeitem(itemid) {
+      await this.deleteitem(itemid);
     },
-    addemptyitem() {
+    async addemptyitem() {
       const item = {
-        _id: this.itemsarr.length + 1,
         itemname: "",
         description: "",
         price: 0,
@@ -132,10 +126,11 @@ export default {
         stockQuantity: 0,
         imageUrl: "",
         bestseller: false,
-        newitem: true,
       };
 
-      this.itemsarr = [...this.itemsarr, item];
+      const createditem = await this.createitem(item);
+
+      this.itemsarr = [...this.itemsarr, createditem];
       this.SET_ITEMS(this.itemsarr);
     },
   },

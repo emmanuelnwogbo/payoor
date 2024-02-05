@@ -106,7 +106,7 @@ export default {
   },
   props: ["item", "gridlength", "removeitem"],
   methods: {
-    ...mapActions("item", ["uploaditemimage"]),
+    ...mapActions("item", ["uploaditemimage", "getitems"]),
     initializevalues() {
       const {
         itemname,
@@ -122,7 +122,7 @@ export default {
         //this.triggeropenonmount();
       }
 
-      this.itemname = itemname;
+      this.itemname = itemname.includes("payoor_id") ? "" : itemname;
       this.description = description;
       this.price = price;
       this.category = category;
@@ -145,7 +145,7 @@ export default {
     openFileDialog() {
       this.$refs.fileInput.click();
     },
-    handleFileUpload(event) {
+    async handleFileUpload(event) {
       const file = event.target.files[0];
 
       if (file) {
@@ -156,7 +156,9 @@ export default {
 
         this.selectedFile = file;
 
-        this.uploaditemimage({ image: this.selectedFile, itemid: this.item._id });
+        await this.uploaditemimage({ image: this.selectedFile, itemid: this.item._id });
+
+        this.getitems();
       }
     },
   },
