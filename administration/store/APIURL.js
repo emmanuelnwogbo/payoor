@@ -1,3 +1,3 @@
-let API_URL = `http://localhost:8080`;
+let API_URL = `server.payoor.shop`;//`http://localhost:8080`;
 
 export default API_URL;
