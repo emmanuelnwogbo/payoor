@@ -25,7 +25,7 @@
 
     &__header {
         line-height: #{scaleValue(40)};
-        margin-bottom: #{scaleValue(40)};
+        margin-bottom: #{scaleValue(30)};
     }
 
     &__search {
@@ -80,6 +80,7 @@
             display: flex;
 
             position: relative;
+            //min-width: #{scaleValue(60)};
 
             &.header {
                 border-top: 1px solid rgb(47, 47, 47);
@@ -229,6 +230,143 @@
     }
 
     &__listheader {}
+
+    &__ingredientsview {
+        //padding-top: #{scaleValue(10)};
+
+        font-size: #{scaleValue(12)};
+        border-bottom: 1px solid rgba($primary-color, .5);
+
+        &--input {
+
+            & input {
+                @include inputbase;
+                width: #{scaleValue(651)};
+            }
+        }
+
+        &--content {
+            display: grid;
+            grid-template-columns: repeat(2, #{scaleValue(650)});
+            margin-top: #{scaleValue(10)};
+        }
+
+        &--products {
+            border-right: 1px solid rgb(47, 47, 47);
+            padding-top: #{scaleValue(10)};
+            padding-left: #{scaleValue(10)};
+            padding-bottom: #{scaleValue(10)};
+
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        &--ingredients {
+            padding-top: #{scaleValue(10)};
+            padding-left: #{scaleValue(10)};
+            padding-bottom: #{scaleValue(10)};
+
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        &--product {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+
+            animation: slideIn 0.5s ease-in-out;
+
+            & figure {
+                border-radius: #{scaleValue(10)};
+                height: #{scaleValue(100)};
+                width: #{scaleValue(100)};
+                position: relative;
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    border-radius: #{scaleValue(10)};
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba($black, .5);
+                    opacity: 0;
+                    z-index: 2
+                }
+
+                &:hover {
+
+                    &::before {
+                        opacity: 1;
+                    }
+                }
+
+                & img {
+                    object-fit: cover;
+                    height: 100%;
+                    width: 100%;
+                    border-radius: #{scaleValue(10)};
+                }
+            }
+
+            & label {
+                display: inline-block;
+                font-size: #{scaleValue(13)};
+                margin-top: #{scaleValue(20)};
+                color: $primary-color;
+                text-transform: capitalize;
+            }
+
+            & span {
+
+                &.ingredient-add {
+                    position: absolute;
+                    z-index: 3;
+                    right: #{scaleValue(-9)};
+                    top: #{scaleValue(-9)};
+                    color: rgba($black, 0.8);
+                    display: flex;
+                    justify-content: center;
+                    height: #{scaleValue(20)};
+                    width: #{scaleValue(20)};
+                    align-items: center;
+                    border-radius: 100%;
+                    font-size: #{scaleValue(20)};
+                    cursor: pointer;
+                    font-weight: 600;
+                    background: rgba($primary-color, .8);
+                }
+            }
+        }
+
+        &--productstock {
+            margin-top: #{scaleValue(10)};
+
+            & span {
+
+                &:nth-child(1) {
+                    color: $primary-color;
+                    font-weight: 500;
+                }
+
+                &:nth-child(2) {}
+            }
+        }
+    }
+
+    &__stepsview {
+
+        &--h4 {
+            margin: #{scaleValue(10)} 0;
+            font-size: #{scaleValue(13)};
+            font-weight: 400;
+            text-transform: capitalize;
+
+            color: rgba($primary-color, .8)
+        }
+    }
 }
 
 .editable {

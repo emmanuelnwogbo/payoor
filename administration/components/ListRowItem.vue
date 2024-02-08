@@ -20,7 +20,18 @@
         </button>
       </span>
     </div>
-    <div class="editable" v-if="!inputvisible">{{ `${value}` ? `${value}` : "" }}</div>
+    <div class="editable" v-if="!inputvisible && itemattribute !== 'category'">
+      {{ `${value}` ? `${value}` : "" }}
+    </div>
+    <div class="editable" v-if="!inputvisible && itemattribute === 'category'">
+      <span>{{ `${value}` ? `${value}` : "" }}</span>
+      <label v-if="!value" class="flex align-center">
+        <span class="pill margin-right-5" @click="setvaluechange('grocery')"
+          >grocery</span
+        >
+        <span class="pill" @click="setvaluechange('recipe')">recipe</span>
+      </label>
+    </div>
     <div v-if="inputvisible">
       <InputEl
         :inputvalue="value"
@@ -29,6 +40,8 @@
         :setvaluechange="setvaluechange"
         :itemattribute="itemattribute"
         :itemid="itemid"
+        :updatecategory="updatecategory"
+        :callgetitems="callgetitems"
       />
     </div>
   </div>
@@ -43,6 +56,8 @@ export default {
     "itemattribute",
     "deleteicon",
     "removeitem",
+    "updatecategory",
+    "callgetitems"
   ],
   data() {
     return {

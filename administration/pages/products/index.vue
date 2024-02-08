@@ -12,6 +12,30 @@
           </div>
         </div>
 
+        <div class="container__categories">
+          <button
+            class="btn container__categories--btn"
+            :class="{ current: visiblecategory === 'all' }"
+            @click="setcategory('all')"
+          >
+            View all
+          </button>
+          <button
+            class="btn container__categories--btn"
+            :class="{ current: visiblecategory === 'recipe' }"
+            @click="setcategory('recipe')"
+          >
+            View only recipes
+          </button>
+          <button
+            class="btn container__categories--btn"
+            :class="{ current: visiblecategory === 'grocery' }"
+            @click="setcategory('grocery')"
+          >
+            View only groceries
+          </button>
+        </div>
+
         <div class="container__content">
           <div class="container__content--left"></div>
           <div class="container__content--right">
@@ -37,6 +61,7 @@
                     :item="item"
                     :gridlength="headers.length"
                     :removeitem="removeitem"
+                    :callgetitems="callgetitems"
                   />
                 </div>
 
@@ -80,6 +105,7 @@ export default {
     return {
       currentitem: {},
       itemsarr: [],
+      visiblecategory: "all",
     };
   },
   computed: {
@@ -92,6 +118,7 @@ export default {
         "# stockQuantity",
         "imageUrl",
         "bestseller",
+        "actions",
       ];
     },
     items() {
@@ -109,20 +136,34 @@ export default {
     },
   },
   mounted() {
-    this.getitems();
+    this.getitems(this.visiblecategory);
   },
   methods: {
+    callgetitems() {
+      this.getitems(this.visiblecategory);
+    },
     ...mapActions("item", ["getitems", "createitem", "deleteitem"]),
     ...mapMutations("item", ["SET_ITEMS"]),
+    setcategory(category) {
+      this.visiblecategory = category;
+      this.getitems(this.visiblecategory);
+    },
     async removeitem(itemid) {
       await this.deleteitem(itemid);
+      this.getitems(this.visiblecategory);
     },
     async addemptyitem() {
+      let category = "";
+
+      if (this.visiblecategory !== "all") {
+        category = this.visiblecategory;
+      }
+
       const item = {
         itemname: "",
         description: "",
         price: 0,
-        category: "",
+        category,
         stockQuantity: 0,
         imageUrl: "",
         bestseller: false,

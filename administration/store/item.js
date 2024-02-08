@@ -15,9 +15,15 @@ export const mutations = {
 }
 
 export const actions = {
-    async getitems({ commit }) {
+    async getitems({ commit }, category) {
         try {
-            const response = await fetch(`${API_URL}/products/inventory/`);
+            let response;
+
+            if (category) {
+                response = await fetch(`${API_URL}/products/inventory?category=${category}`);
+            } else {
+                response = await fetch(`${API_URL}/products/inventory/`);
+            }
 
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
@@ -55,7 +61,7 @@ export const actions = {
             console.error('There was an error!', error);
         }
     },
-    async updateitem({ commit }, { itemid, itemattribute, value }) {
+    async updateitem({ commit, dispatch }, { itemid, itemattribute, value }) {
         try {
             const response = await fetch(`${API_URL}/product/inventory/update?productid=${itemid}&&itemattribute=${itemattribute}`, {
                 method: 'PUT',
@@ -73,7 +79,7 @@ export const actions = {
                 const data = await response.json();
 
                 const { item } = data;
-                dispatch('getitems');
+                //dispatch('getitems');
             }
         } catch (error) {
             console.error('There was an error!', error);
@@ -112,7 +118,7 @@ export const actions = {
             }
 
             if (response.status === 200) {
-                dispatch('getitems');
+                return true;
             }
         } catch (error) {
             console.error('There was an error!', error);
@@ -136,7 +142,7 @@ export const actions = {
             if (response.status === 201) {
                 const data = await response.json();
 
-                console.log(data)
+                //console.log(data)
             }
         } catch (error) {
             console.log(error)

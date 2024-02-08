@@ -7,6 +7,7 @@
       ref="input"
       v-if="inputtype === 'text' || inputtype === 'number'"
       @keyup.enter="handleEnterKeyPress"
+      :placeholder="`${itemattribute}`"
     />
 
     <textarea v-model="value" ref="input" v-if="inputtype === 'textarea'"></textarea>
@@ -24,6 +25,8 @@ export default {
     "setvaluechange",
     "itemattribute",
     "itemid",
+    "updatecategory",
+    "callgetitems"
   ],
   data() {
     return {
@@ -46,10 +49,11 @@ export default {
     }
   },
   methods: {
-    ...mapActions("item", ["updateitemfromstore"]),
-    updateitem() {
+    ...mapActions("item", ["updateitemfromstore", "getitems"]),
+    async updateitem() {
       const itemattribute = `${this.itemattribute}`;
-      this.updateitemfromstore({ itemid: this.itemid, itemattribute, value: this.value });
+      await this.updateitemfromstore({ itemid: this.itemid, itemattribute, value: this.value });
+      this.callgetitems();
     },
     async callblurfunction() {
       if (!this.value || !this.value.trim().length) {
@@ -59,6 +63,10 @@ export default {
 
         this.blurfunction();
         return;
+      }
+
+      if (this.itemattribute === "category") {
+        await this.updateitem();
       }
 
       if (this.value !== this.oldvalue) {
