@@ -1,7 +1,7 @@
 let ENVIRO;
 let API_URL;
 
-ENVIRO = 'development';
+ENVIRO = 'production';
 
 if (ENVIRO === 'development') {
     API_URL = `http://localhost:8080`;
